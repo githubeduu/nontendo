@@ -1,2 +1,1 @@
-# nontendo
-venta videojuegos
+# juegos-mesa
