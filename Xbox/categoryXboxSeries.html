@@ -5,11 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Xbox Series - Nontendo</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
         <link rel="stylesheet" href="../css/style.css">
     </head>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>       
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+        <script src="../js/carrito.js"></script>      
     <body>
         <header>
             <nav class="navbar navbar-expand-sm navbar-light">
@@ -44,67 +46,70 @@
                             Nintendo
                         </a>
                         <ul class="dropdown-menu curved-dropdown" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="../Nintendo/categoryNintendoSwitch.html">Nintendo Switch</a></li>
-                            <li><a class="dropdown-item" href="../Nintendo/categoryNintendoAmiibo.html">Amiibo</a></li>                      
+                            <li><a class="dropdown-item" href="../Nintendo/categoryNintendoSwitch.html">Nintendo Switch</a></li>                                          
                         </ul>                    
+                    </li>                   
+                  </ul>
+                  <ul class="navbar-nav ml-auto">
+                    <li id="loginNavItem" class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../registroUsuario.html">Registro Usuario</a>
+                        <a class="nav-link" href="../registroUsuario.html">Registro Usuario</a>
                     </li>
-                  </ul>
+                    <li>
+                        <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
+                            <i class="bi bi-cart-fill"></i>
+                        </a>
+                    </li> 
+                </ul>
                 </div>
             </nav>               
         </header>
-    <main>
-        <section id="games">
-            <article class="game">
-                <img src="imagenes/catan.webp" alt="Juego 1">
-                <h2>Catan</h2>
-                <p>Catan es un juego de mesa para toda la familia que se ha convertido en un fenómeno mundial. 
-                    Desde su aparición en Alemania ha vendido más que muchos de los juegos más tradicionales. 
-                    Se trata de un juego que aúna la estrategia, la astucia y la capacidad para negociar y en el que los jugadores tratan de colonizar una isla, Catán, 
-                    rica en recursos naturales. Construyendo pueblos, estableciendo rutas comerciales, etc… Catan ha vendido más de 2 millones de ejemplares en Europa y América. 
-                    Por si esto no fuera bastante, ha sido galardonado en Alemania y Estados Unidos como Juego del Año. 
-                    El juego básico de Catan, a la venta desde hace más de 10 años en España, ha marcado un hito en toda Europa en cuanto a juego de planificación, colaboración y, 
-                    por supuesto, diversión. No hace falta comentar que es la única pieza indispensable de Catan en tu ludoteca. 
-                    A partir del básico se abre todo el abanico de expansiones que la isla de Catán te ofrece.</p>
-                <p class="price">Precio: $34.990 <span>Descuento: Sí/No</span></p>
-            </article>
-            <article class="game">
-                <img src="imagenes/senda.jpg" alt="Juego 1">
-                <h2>Hanamikoji: La Senda de la Geisha</h2>
-                <p>Lleno de intenciones implícitas, mensajes velados y acciones ocultas, los jugadores representan patrocinadores rivales pero amigables que apoyan a Yoko, Tomoyo y otros a lo largo de su viaje desde aprendiz (maiko) a la geisha completa (artista) y quizás incluso al dueño (okaasan) de su propio establecimiento.
-
-                    Contenido:
-                    
-                    21 Cartas
-                    20 Cartas de Objeto
-                    Carta de Prestigio
-                    5 Cartas de Casa de Té
-                    5 Figuras de Geisha
-                    8 Fichas de Acción
-                    4 Fichas para Ofertas
-                    9 Fichas de Linterna
-                    5 Fichas de Puntuación
-                    5 Fichas de Desempate
-                    15 Fichas de Invitado
-                    Marcador de Jugador Inicial
-                    Reglamento</p>
-                <p class="price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-            </article>
-            <article class="game">
-                <img src="imagenes/splendor.jpg" alt="Juego 1">
-                <h2>SPLENDOR DUEL</h2>
-                <p>Enfréntate a tu gremio rival en una carrera por la victoria.
-                   Toma fichas de Gema y de Perla del tablero común y, a continuación, compra cartas y acumula bonificaciones, favores reales y Prestigio.                    
-                   Descubre nuevas formas de jugar y oportunidades estratégicas derivadas de Splendor, el juego original superventas.                    
-                   Compra cartas que conceden asombrosas capacidades, aprovéchate de los favores reales y pugna por hacerte con algunas de las escasas perlas.
-                   CONTENIDO                    
-                   1 tarjeta de victoria, 67 cartas de Joya, 1 bolsa, 3 pergaminos de Privilegio, 1 tablero, 25 fichas, 4 cartas de la Realeza, 1 reglamento.</p>
-                <p class="price">Precio: $22.990 <span>Descuento: Sí/No</span></p>
-            </article>
-        </section>
-    </main>
+        <main>
+            <section id="games" class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/xbox/2kdrive.jpg" class="card-img-top" alt="Juego 1">
+                            <div class="card-body">
+                                <h5 class="card-title">2K Drive</h5>
+                                <p class="card-text">es un juego de carreras desarrollado por Lucid Games y publicado por 2K Games para dispositivos móviles. Ofrece una variedad de modos de juego, incluidas carreras, desafíos, eventos multijugador y más. Los jugadores pueden competir en diferentes tipos de carreras y desafíos en varios entornos, desde pistas de carreras hasta calles urbanas.</p>
+                                <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                                <button class="btn btn-primary agregar-carrito" data-id="1">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/xbox/battlefield.jpg" class="card-img-top" alt="Juego 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Battlefield 2042</h5>
+                                <p class="card-text">es una serie de videojuegos de disparos en primera persona desarrollada por EA DICE y publicada por Electronic Arts. Conocida por sus grandes mapas, vehículos y batallas multijugador, la serie se centra en la guerra moderna y ha sido elogiada por su jugabilidad y gráficos.</p>
+                                <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                                <button class="btn btn-primary agregar-carrito" data-id="2">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/xbox/sanandreasxbx.jpg" class="card-img-top" alt="Juego 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Grand Theft Auto: San Andreas</h5>
+                                <p class="card-text">para Xbox Series X ofrece la clásica aventura de CJ con gráficos mejorados y tiempos de carga más rápidos, manteniendo su icónica jugabilidad y narrativa.</p>
+                                <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                                <button class="btn btn-primary agregar-carrito" data-id="3">Agregar al Carrito</button>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>              
+            </section>
+            <div id="carrito" class="container mt-4">            
+                <ul id="listaProductos" class="list-group mb-3">                 
+                </ul>
+        
+            </div>
+        </main>
     <footer>
         <p>&copy; 2024 Nontendo</p>
     </footer>

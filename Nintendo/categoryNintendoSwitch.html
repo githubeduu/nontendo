@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nintendo Switch - Nontendo</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
         <link rel="stylesheet" href="../css/style.css">
     </head>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -44,53 +45,114 @@
                             Nintendo
                         </a>
                         <ul class="dropdown-menu curved-dropdown" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="../Nintendo/categoryNintendoSwitch.html">Nintendo Switch</a></li>
-                            <li><a class="dropdown-item" href="../Nintendo/categoryNintendoAmiibo.html">Amiibo</a></li>                      
+                            <li><a class="dropdown-item" href="../Nintendo/categoryNintendoSwitch.html">Nintendo Switch</a></li>                              
                         </ul>                    
+                    </li>                    
+                  </ul>
+                  <ul class="navbar-nav ml-auto">
+                    <li id="loginNavItem" class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../registroUsuario.html">Registro Usuario</a>
+                        <a class="nav-link" href="../registroUsuario.html">Registro Usuario</a>
                     </li>
-                  </ul>
+                    <li>
+                        <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
+                            <i class="bi bi-cart-fill"></i>
+                        </a>
+                    </li> 
+                </ul>
                 </div>
             </nav>               
         </header>
-    <main>
-        <section id="games">
-            <article class="game">
-                <img src="imagenes/mysterium.webp" alt="Juego 1">
-                <h2>Mysterium</h2>
-                <p>DESCRIPCIÓN
-                    Mysterium es un juego de mesa cooperativo en el que tú y tus amigos se aventuran mentalmente en la mansión encantada de Mysterium. 
-                    Un jugador representa el papel de fantasma mientras todos los demás son mediums. Para resolver el crimen, 
-                    el fantasma debe primero recordar (con vuestra ayuda) los detalles y sospechosos.
-                    1920, el Sr. MacDowell, el astrólogo, inmediatamente detectó un ser sobrenatural al entrar en su nueva casa en Escocia. 
-                    Reunió a los mas eminentes mediums de su tiempo para una sesión de espiritismo extraordinaria, 
-                    hay siete horas para contactar el fantasma e investigar cualquier pista que pueda proporcionar para desbloquear un antiguo misterio.</p>
-                <p class="price">Precio: $39.990 <span>Descuento: Sí/No</span></p>
-            </article> 
-            <article class="game">
-                <img src="imagenes/star wars.webp" alt="Juego 1">
-                <h2>Star Wars: Las Guerras Clon</h2>
-                <p>DESCRIPCIÓN
-                    El Gran Ejército de la República libra una valerosa contienda para derrotar a las temibles huestes de drones del conde Dooku a medida que un mundo tras otro cae a los pies del malvado lord Sith y su maquinaria de guerra separatista.
-                    Cambia las tornas de este devastador conflicto en Star Wars: Las Guerras Clon – Un juego de tablero basado en Pandemic. 
-                    Resiste junto a tus aliados como legendarios Jedi que se enfrentan a incontables legiones de droides de combate y sus viles líderes a lo largo de cuatro apasionantes escenarios.
-                    Usando tus capacidades únicas y el poder de la Fuerza, trabaja en equipo para completar misiones que pondrán fin a las Guerras Clon de una vez por todas.</p>
-                <p class="price">Precio: $46.740 <span>Descuento: Sí/No</span></p>
-            </article> 
-            <article class="game">
-                <img src="imagenes/fast food fear.webp" alt="Juego 1">
-                <h2>Fast Food Fear</h2>
-                <p>DESCRIPCIÓN
-                    Hoy en día, los monstruos del pantano de Dagoblah prefieren la comida basura: es rápida, cómoda y puedes degustar las mejores porquerías de la galaxia. 
-                    El negocio va bien, pero los clientes son muy exigentes: es preferible no hacerlos esperar. En cuanto el pedido de un cliente entra en la cocina, todo el mundo debe ponerse las pilas para servirlo de inmediato. 
-                    Tener que dar explicaciones a un montón de clientes hambrientos de por qué no les han servido todavía su comida no tiene ninguna gracia… Fast Food Fear! 
-                    es un juego sobre una cocina muy muy lejana a cargo de un compenetrado equipo de 3 a 6 cocineros, enfrascados en una monstruosa carrera contrarreloj.</p>
-                <p class="price">Precio: $15.990 <span>Descuento: Sí/No</span></p>
-            </article>         
-        </section>
-    </main>
+        <main>
+            <section id="games" class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/switch/burnout.jpg" class="card-img-top" alt="Juego 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Burnout Paradise Remastered</h5>
+                                <p class="card-text">fue lanzado para Nintendo Switch el 19 de junio de 2020. Es una versión remasterizada del juego original lanzado en 2008, que incluye gráficos mejorados y todo el contenido descargable lanzado previamente.</p>
+                                <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/switch/diesel.jpg" class="card-img-top" alt="Juego 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Diesel Legacy: The Brazen Age</h5>
+                                <p class="card-text">es un juego de estrategia y supervivencia postapocalíptico donde los jugadores construyen, reclutan y luchan por sobrevivir en un mundo lleno de peligros y decisiones difíciles.</p>
+                                <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/switch/fist.jpg" class="card-img-top" alt="Juego 3">
+                            <div class="card-body">
+                                <h5 class="card-title">F.I.S.T: Forged in Shadow Torch</h5>
+                                <p class="card-text">En "F.I.S.T: Forged in Shadow Torch", juegas como un conejo mecanizado que usa un gran puño para combatir en un mundo distópico de máquinas y criaturas, combinando acción, exploración y plataformas en un metroidvania único.</p>
+                                <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/switch/lego.jpg" class="card-img-top" alt="Juego 3">
+                            <div class="card-body">
+                                <h5 class="card-title">LEGO Los Increíbles</h5>
+                                <p class="card-text">En "LEGO Los Increíbles", vive las aventuras de la familia Parr en un mundo lleno de bloques. Combina habilidades únicas y lucha contra el crimen en una divertida experiencia LEGO.</p>
+                                <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                            </div>
+                        </div>
+                    </div>               
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/switch/mariorabbids.jpg" class="card-img-top" alt="Juego 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Mario + Rabbids Kingdom Battle</h5>
+                                <p class="card-text"> es un juego de estrategia por turnos donde los personajes de Mario y los Rabbids se unen en una aventura cómica. Con un estilo artístico vibrante y desafíos estratégicos, es una combinación única de dos mundos icónicos.</p>
+                                <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/switch/mortalkombat.jpg" class="card-img-top" alt="Juego 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Mortal Kombat 11</h5>
+                                <p class="card-text"> es un juego de lucha desarrollado por NetherRealm Studios. Presenta una jugabilidad intensa y violenta, con una variedad de personajes icónicos y nuevos luchadores. El juego también incluye un modo historia cinematográfico y profundo, así como opciones multijugador competitivas.</p>
+                                <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/switch/myhero.jpg" class="card-img-top" alt="Juego 3">
+                            <div class="card-body">
+                                <h5 class="card-title">My Hero One's Justice</h5>
+                                <p class="card-text">es un juego de lucha basado en "My Hero Academia", donde los personajes usan habilidades únicas en batallas intensas uno contra uno en entornos destructibles.</p>
+                                <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="../imagenes/juegos/switch/superheroes.jpg" class="card-img-top" alt="Juego 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Super Dragon Ball Heroes: World Mission</h5>
+                                <p class="card-text">es un juego de cartas estratégico basado en el universo de Dragon Ball. Los jugadores crean decks con personajes de la serie y participan en batallas tácticas. Ofrece una amplia gama de personajes y habilidades, así como un modo historia emocionante.</p>
+                                <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </section>
+        </main>
     <footer>
         <p>&copy; 2024 Nontendo</p>
     </footer>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playstation 5 - Nontendo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -44,50 +45,112 @@
                         Nintendo
                     </a>
                     <ul class="dropdown-menu curved-dropdown" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="../Nintendo/categoryNintendoSwitch.html">Nintendo Switch</a></li>
-                        <li><a class="dropdown-item" href="../Nintendo/categoryNintendoAmiibo.html">Amiibo</a></li>                      
+                        <li><a class="dropdown-item" href="../Nintendo/categoryNintendoSwitch.html">Nintendo Switch</a></li>                                       
                     </ul>                    
+                </li>              
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                <li id="loginNavItem" class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../registroUsuario.html">Registro Usuario</a>
+                    <a class="nav-link" href="../registroUsuario.html">Registro Usuario</a>
                 </li>
-              </ul>
+                <li>
+                    <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
+                        <i class="bi bi-cart-fill"></i>
+                    </a>
+                </li> 
+            </ul>
             </div>
         </nav>               
     </header>
     <main>
-        <section id="games">
-            <article class="game">
-                <img src="imagenes/aventureros.webp" alt="Juego 1">
-                <h2>¡Aventureros al Tren! (Ticket to Ride)</h2>
-                <p>DESCRIPCIÓN
-                    2 de octubre, 1900. 28 años después de que ese excéntrico londinense, 
-                    Phileas Fogg, aceptase un reto que le haría ganar 20.000 libras: dar La vuelta al mundo en 80 días. Ahora, 
-                    en el amanecer de un nuevo siglo, es el momento de emprender un viaje aún más imposible. Unos viejos amigos se han reunido para celebrar la impetuosa y lucrativa apuesta de Fogg, 
-                    y para proponer una nueva. El premio: 1 millón de dólares para el ganador. La apuesta: comprobar quién es capaz de visitar en tren más ciudades norteamericanas, 
-                    en sólo 7 días. El viaje comienza ya...</p>
-                <p class="price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
-            </article> 
-            <article class="game">
-                <img src="imagenes/carcassonne-niebla-en-carcassonne.jpg" alt="Juego 2">
-                <h2>Carcassonne</h2>
-                <p>¿Listos para una aventura embrujada?...
-                    Prepárate para jugar en familia,  Niebla en Carcassonne te lleva a un universo fantástico donde deberán cooperar entre todos para detener la propagación de fantasmas y contener la niebla misteriosa. 
-                    Los castillos embrujados están a tu favor. Si son lo suficientemente valientes y logran sobrevivir 3 días aumenten el nivel de dificultad y enfrenten un nuevo reto.
-                    ¿Están listos para aceptar el desafío y dar descanso a las almas inquietas?
-                    NOTA: Niebla en Carcassonne es un juego totalmente independiente y, al mismo tiempo, compatible con el juego básico Carcassonne 2da Edición.</p>
-                <p class="price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
-            </article>
-            <article class="game">
-                <img src="imagenes/cat-in-the-box.jpg" alt="Juego 3">
-                <h2>Cat in the box</h2>
-                <p>¡Imagina un juego de cartas donde las reglas las escribes tú!
-                    Cat In The Box te lleva a un viaje lúdico donde cada carta es una puerta a lo impredecible. Este juego de cartas trae la emoción de lo desconocido a tu mesa, un juego familiar para los que aman los giros inesperados. 
-                    Aquí, el color de cada carta es un misterio que solo tú puedes resolver, desafiándote a pensar más allá, a jugar con la incertidumbre y a sacar el máximo partido de tu estrategia. Un juego de bazas donde los gatos cuánticos son los verdaderos protagonistas.                    
-                    Perfecto para mentes curiosas y almas aventureras.                    
-                    ¿Quieres vivir una experiencia de juego que trasciende lo ordinario? Atrévete a entrar en el mundo cuántico de Cat In The Box.</p>
-                <p class="price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-            </article>        
+        <section id="games" class="container mt-4">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="../imagenes/juegos/ps5/dragonball.jpg" class="card-img-top" alt="Juego 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Dragon FighterZ</h5>
+                            <p class="card-text">Experimenta intensas batallas 3v3 en Dragon Ball FighterZ. Disfruta de gráficos espectaculares y combates llenos de acción con tus personajes favoritos de Dragon Ball en este emocionante juego de lucha.</p>
+                            <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="../imagenes/juegos/ps5/gotham.jpg" class="card-img-top" alt="Juego 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Gotham</h5>
+                            <p class="card-text">En 'Gotham Knights' para PS5, protege Gotham tras la muerte de Batman. Juega como Nightwing, Batgirl, Robin y Red Hood en un juego de acción RPG, enfrentando a villanos emblemáticos y resolviendo crímenes.</p>
+                            <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="../imagenes/juegos/ps5/gta.jpg" class="card-img-top" alt="Juego 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Grand Theft Auto V</h5>
+                            <p class="card-text">Sumérgete en el mundo criminal de Los Santos en 'Grand Theft Auto V'. Controla a tres personajes únicos en una historia llena de acción, robos y caos en un vasto mundo abierto con múltiples actividades y misiones.</p>
+                            <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="../imagenes/juegos/ps5/leo.jpg" class="card-img-top" alt="Juego 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Leo the Firefighter Cat</h5>
+                            <p class="card-text">Únete a Leo, el valiente gato bombero, en esta aventura para PS5. Ayuda a Leo a salvar vidas y apagar incendios en una ciudad llena de peligros y desafíos, combinando acción, estrategia y diversión.</p>
+                            <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        </div>
+                    </div>
+                </div>           
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="../imagenes/juegos/ps5/nba.jpg" class="card-img-top" alt="Juego 1">
+                        <div class="card-body">
+                            <h5 class="card-title">NBA 2K22</h5>
+                            <p class="card-text">Vive la emoción del baloncesto con NBA 2K22 para PS5. Experimenta gráficos realistas, jugabilidad mejorada y modos de juego como MyCareer, MyTeam y más. Compite con equipos y estrellas de la NBA.</p>
+                            <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="../imagenes/juegos/ps5/saintsrow.jpg" class="card-img-top" alt="Juego 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Saints Row</h5>
+                            <p class="card-text">Explora el reinicio de 'Saints Row' para PS5, donde formas tu propio imperio criminal en Santo Ileso. Disfruta de una jugabilidad de mundo abierto llena de acción, humor y caos en una ciudad vibrante.</p>
+                            <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="../imagenes/juegos/ps5/wonderlands.jpg" class="card-img-top" alt="Juego 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Tiny Tina's Wonderlands</h5>
+                            <p class="card-text">Embárcate en una épica aventura de fantasía en 'Tiny Tina's Wonderlands' para PS5. Crea tu héroe, combate monstruos y explora mundos mágicos en esta caótica y divertida experiencia RPG de los creadores de Borderlands.</p>
+                            <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="../imagenes/juegos/ps5/wwe.jpg" class="card-img-top" alt="Juego 3">
+                        <div class="card-body">
+                            <h5 class="card-title">WWE 2K23</h5>
+                            <p class="card-text">Experimenta la acción del wrestling con 'WWE 2K23' para PS5. Disfruta de gráficos realistas, un roster de superestrellas actualizado, modos de juego mejorados y la emoción del ring en tus manos.</p>
+                            <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        </div>
+                    </div>
+                </div>              
+            </div>
         </section>
     </main>
     <footer>
