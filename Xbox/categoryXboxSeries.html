@@ -5,11 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Xbox Series - Nontendo</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
         <link rel="stylesheet" href="../css/style.css">
     </head>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>       
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+        <script src="../js/carrito.js"></script>      
     <body>
         <header>
             <nav class="navbar navbar-expand-sm navbar-light">
@@ -46,11 +48,21 @@
                         <ul class="dropdown-menu curved-dropdown" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="../Nintendo/categoryNintendoSwitch.html">Nintendo Switch</a></li>                                          
                         </ul>                    
+                    </li>                   
+                  </ul>
+                  <ul class="navbar-nav ml-auto">
+                    <li id="loginNavItem" class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../registroUsuario.html">Registro Usuario</a>
+                        <a class="nav-link" href="../registroUsuario.html">Registro Usuario</a>
                     </li>
-                  </ul>
+                    <li>
+                        <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
+                            <i class="bi bi-cart-fill"></i>
+                        </a>
+                    </li> 
+                </ul>
                 </div>
             </nav>               
         </header>
@@ -61,9 +73,10 @@
                         <div class="card">
                             <img src="../imagenes/juegos/xbox/2kdrive.jpg" class="card-img-top" alt="Juego 1">
                             <div class="card-body">
-                                <h5 class="card-title">¡Aventureros al Tren! (Ticket to Ride)</h5>
-                                <p class="card-text">DESCRIPCIÓN 2 de octubre, 1900. 28 años después de que ese excéntrico londinense, Phileas Fogg, aceptase un reto que le haría ganar 20.000 libras: dar La vuelta al mundo en 80 días...</p>
+                                <h5 class="card-title">2K Drive</h5>
+                                <p class="card-text">es un juego de carreras desarrollado por Lucid Games y publicado por 2K Games para dispositivos móviles. Ofrece una variedad de modos de juego, incluidas carreras, desafíos, eventos multijugador y más. Los jugadores pueden competir en diferentes tipos de carreras y desafíos en varios entornos, desde pistas de carreras hasta calles urbanas.</p>
                                 <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                                <button class="btn btn-primary agregar-carrito" data-id="1">Agregar al Carrito</button>
                             </div>
                         </div>
                     </div>
@@ -71,9 +84,10 @@
                         <div class="card">
                             <img src="../imagenes/juegos/xbox/battlefield.jpg" class="card-img-top" alt="Juego 2">
                             <div class="card-body">
-                                <h5 class="card-title">Carcassonne</h5>
-                                <p class="card-text">¿Listos para una aventura embrujada? Prepárate para jugar en familia, Niebla en Carcassonne te lleva a un universo fantástico donde deberán cooperar entre todos para detener la propagación de fantasmas y contener la niebla misteriosa...</p>
+                                <h5 class="card-title">Battlefield 2042</h5>
+                                <p class="card-text">es una serie de videojuegos de disparos en primera persona desarrollada por EA DICE y publicada por Electronic Arts. Conocida por sus grandes mapas, vehículos y batallas multijugador, la serie se centra en la guerra moderna y ha sido elogiada por su jugabilidad y gráficos.</p>
                                 <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                                <button class="btn btn-primary agregar-carrito" data-id="2">Agregar al Carrito</button>
                             </div>
                         </div>
                     </div>
@@ -81,68 +95,20 @@
                         <div class="card">
                             <img src="../imagenes/juegos/xbox/sanandreasxbx.jpg" class="card-img-top" alt="Juego 3">
                             <div class="card-body">
-                                <h5 class="card-title">Cat in the box</h5>
-                                <p class="card-text">¡Imagina un juego de cartas donde las reglas las escribes tú! Cat In The Box te lleva a un viaje lúdico donde cada carta es una puerta a lo impredecible. Este juego de cartas trae la emoción de lo desconocido a tu mesa, un juego familiar para los que aman los giros inesperados...</p>
+                                <h5 class="card-title">Grand Theft Auto: San Andreas</h5>
+                                <p class="card-text">para Xbox Series X ofrece la clásica aventura de CJ con gráficos mejorados y tiempos de carga más rápidos, manteniendo su icónica jugabilidad y narrativa.</p>
                                 <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                                <button class="btn btn-primary agregar-carrito" data-id="3">Agregar al Carrito</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="card">
-                            <img src="imagenes/cat-in-the-box.jpg" class="card-img-top" alt="Juego 3">
-                            <div class="card-body">
-                                <h5 class="card-title">Cat in the box</h5>
-                                <p class="card-text">¡Imagina un juego de cartas donde las reglas las escribes tú! Cat In The Box te lleva a un viaje lúdico donde cada carta es una puerta a lo impredecible. Este juego de cartas trae la emoción de lo desconocido a tu mesa, un juego familiar para los que aman los giros inesperados...</p>
-                                <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Puedes añadir más productos siguiendo la misma estructura -->
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="card">
-                            <img src="imagenes/aventureros.webp" class="card-img-top" alt="Juego 1">
-                            <div class="card-body">
-                                <h5 class="card-title">¡Aventureros al Tren! (Ticket to Ride)</h5>
-                                <p class="card-text">DESCRIPCIÓN 2 de octubre, 1900. 28 años después de que ese excéntrico londinense, Phileas Fogg, aceptase un reto que le haría ganar 20.000 libras: dar La vuelta al mundo en 80 días...</p>
-                                <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="card">
-                            <img src="imagenes/carcassonne-niebla-en-carcassonne.jpg" class="card-img-top" alt="Juego 2">
-                            <div class="card-body">
-                                <h5 class="card-title">Carcassonne</h5>
-                                <p class="card-text">¿Listos para una aventura embrujada? Prepárate para jugar en familia, Niebla en Carcassonne te lleva a un universo fantástico donde deberán cooperar entre todos para detener la propagación de fantasmas y contener la niebla misteriosa...</p>
-                                <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="card">
-                            <img src="imagenes/cat-in-the-box.jpg" class="card-img-top" alt="Juego 3">
-                            <div class="card-body">
-                                <h5 class="card-title">Cat in the box</h5>
-                                <p class="card-text">¡Imagina un juego de cartas donde las reglas las escribes tú! Cat In The Box te lleva a un viaje lúdico donde cada carta es una puerta a lo impredecible. Este juego de cartas trae la emoción de lo desconocido a tu mesa, un juego familiar para los que aman los giros inesperados...</p>
-                                <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="card">
-                            <img src="imagenes/cat-in-the-box.jpg" class="card-img-top" alt="Juego 3">
-                            <div class="card-body">
-                                <h5 class="card-title">Cat in the box</h5>
-                                <p class="card-text">¡Imagina un juego de cartas donde las reglas las escribes tú! Cat In The Box te lleva a un viaje lúdico donde cada carta es una puerta a lo impredecible. Este juego de cartas trae la emoción de lo desconocido a tu mesa, un juego familiar para los que aman los giros inesperados...</p>
-                                <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Puedes añadir más productos siguiendo la misma estructura -->
-                </div>
+                    </div>                   
+                </div>              
             </section>
+            <div id="carrito" class="container mt-4">            
+                <ul id="listaProductos" class="list-group mb-3">                 
+                </ul>
+        
+            </div>
         </main>
     <footer>
         <p>&copy; 2024 Nontendo</p>

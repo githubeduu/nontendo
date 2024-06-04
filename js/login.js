@@ -1,29 +1,30 @@
+const usuarioGuardado = 'edu';
+const contraseñaGuardada = '1234';
+
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        let isValid = true;
+    const loginForm = document.getElementById('loginForm');
 
-        const username = document.getElementById('username');
-        if (!username.value) {
-            isValid = false;
-            username.classList.add('is-invalid');
-        } else {
-            username.classList.remove('is-invalid');
-        }
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            let isValid = true;
 
-        const password = document.getElementById('password');
-        if (!password.value) {
-            isValid = false;
-            password.classList.add('is-invalid');
-        } else {
-            password.classList.remove('is-invalid');
-        }
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
 
-        if (isValid) {
-            alert('Inicio de sesión exitoso');
-            // Aquí puedes redirigir al usuario o realizar alguna acción tras el login exitoso
-        } else {
-            alert('Por favor, corrige los errores en el formulario');
-        }
-    });
+            if (username.value !== usuarioGuardado || password.value !== contraseñaGuardada) {
+                isValid = false;
+                alert('Usuario o contraseña incorrectos');
+            }
+
+            if (isValid) {
+                document.getElementById('loginNavItem').style.display = 'none';
+                // Aquí se redirige a index.html si el usuario y la contraseña son correctos
+                window.location.href = 'index.html';
+                alert('usuario valido');
+            } else {
+                alert('Por favor, corrige los errores en el formulario');
+            }
+        });
+    }
 });

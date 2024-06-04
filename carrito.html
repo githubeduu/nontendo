@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nontendo - Login</title>
+    <title>Nontendo - Carrito</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light">
             <img src="imagenes/logo/logo.png" alt="Logo Nontendo">            
@@ -40,25 +37,58 @@
             </div>
         </nav>               
     </header>
-    <main class="container mt-5">
-        <h2 class="text-center mb-4">Login</h2>
-        <form id="loginForm" action="index.html" method="post">
-            <div class="form-group">
-                <label for="username">Nombre de Usuario</label>
-                <input type="text" class="form-control" id="username" name="username" required>
-                <div class="invalid-feedback">Por favor, ingresa tu nombre de usuario.</div>
-            </div>
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-                <div class="invalid-feedback">Por favor, ingresa tu contraseña.</div>
-            </div>
-            <button id="loginButton" class="btn btn-primary" type="submit">Ingresar</button>
-        </form>
-    </main>
+    <div class="container">
+        <h1>Carrito</h1>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Acción</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody id="items"></tbody>
+            <tfoot>
+                <tr id="footer">
+                    <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="row" id="cards"></div>
+    </div>
+
+    <template id="template-footer">
+        <th scope="row" colspan="2">Total productos</th>
+        <td>10</td>
+        <td>
+            <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+                vaciar todo
+            </button>
+        </td>
+        <td class="font-weight-bold">$ <span>5000</span></td>
+    </template>    
+    <template id="template-carrito">
+        <tr>
+            <th scope="row">id</th>
+            <td>Producto</td>
+            <td>1</td>
+            <td>
+                <button class="btn btn-info btn-sm">+</button>
+                <button class="btn btn-danger btn-sm">-</button>
+            </td>
+            <td>$ <span>0</span></td>
+        </tr>
+    </template>
     <footer class="text-center mt-5">
         <p>&copy; 2024 Nontendo</p>
-    </footer>
+    </footer>    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 </html>
