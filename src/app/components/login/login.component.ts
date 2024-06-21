@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  constructor(private router: Router) {}
   usuarioGuardado = 'edu';
   contraseñaGuardada = '1234';
 
@@ -27,7 +28,7 @@ export class LoginComponent {
     if (isValid) {
       alert('usuario valido');
       // Aquí se redirige a index.html si el usuario y la contraseña son correctos
-      window.location.href = 'index.html';
+      this.router.navigate(['/index']);
     } else {
       alert('Por favor, corrige los errores en el formulario');
     }
