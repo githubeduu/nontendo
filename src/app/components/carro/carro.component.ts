@@ -4,18 +4,21 @@ import { RouterModule } from '@angular/router';
 import { CarroService } from '../../services/carro.service';
 
 @Component({
-  selector: 'app-category-xbox-series',
+  selector: 'app-carro',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './category-xbox-series.component.html',
-  styleUrl: './category-xbox-series.component.scss'
+  templateUrl: './carro.component.html',
+  styleUrl: './carro.component.scss'
 })
-export class CategoryXboxSeriesComponent {
+export class CarroComponent {
   carroService = inject(CarroService);
 
-
-  agregarAlCarro(producto : any){
-    this.carroService.agregarAlCarro(producto);
-    alert('Producto Agregado correctamente');
+  trackById(index: number, item: any): any {
+    return item.id;
   }
+
+  borrarDeCarro(item : any){
+    this.carroService.borrarDeCarro(item)
+  }
+
 }
