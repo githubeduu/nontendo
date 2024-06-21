@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-category-registro',
@@ -16,7 +17,8 @@ export class CategoryRegistroComponent {
   formSubmitted: boolean = false;
 
   constructor(private fb: FormBuilder,
-              private router: Router
+              private router: Router,
+              private userService: UserService
   ) {}
   
   ngOnInit(): void {
@@ -66,6 +68,16 @@ export class CategoryRegistroComponent {
   submitForm() {
     this.formSubmitted = true;
     if (this.miFormulario.valid){  
+
+      const newUser = {
+        name: this.miFormulario.get('name')!.value,
+        email: this.miFormulario.get('email')!.value,
+        username: this.miFormulario.get('username')!.value,
+        password: this.miFormulario.get('password')!.value        
+      };
+      this.userService.addUser(newUser);
+
+
       console.log("Resultado: " + this.miFormulario.get('name')!.value);
       window.alert('Usuario registrado exitosamente');
       this.router.navigate(['/index']);

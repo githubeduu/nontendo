@@ -2,6 +2,7 @@
 import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { UserService } from '../../services/usuario.service';
 
 @Component({
   standalone: true,
@@ -11,12 +12,20 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements AfterViewInit {
-
+  currentUser: any;
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) { }
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private userService: UserService
+  ) {
+    this.currentUser = this.userService.getCurrentUser(); 
+  }
+
+  logout() {
+    this.userService.logout(); // Elimina el usuario autenticado
+    this.currentUser = null;
+  }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {

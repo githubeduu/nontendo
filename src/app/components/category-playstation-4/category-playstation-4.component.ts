@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CarroService } from '../../services/carro.service';
 
 @Component({
   selector: 'app-category-playstation-4',
@@ -10,5 +11,11 @@ import { RouterModule } from '@angular/router';
   styleUrl: './category-playstation-4.component.scss'
 })
 export class CategoryPlaystation4Component {
+  carroService = inject(CarroService);
 
+
+  agregarAlCarro(producto : any){
+    this.carroService.agregarAlCarro(producto);
+    alert('Producto Agregado correctamente');
+  }
 }

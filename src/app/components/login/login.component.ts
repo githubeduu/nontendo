@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -10,27 +11,25 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  constructor(private router: Router) {}
-  usuarioGuardado = 'edu';
-  contraseñaGuardada = '1234';
+  constructor(private router: Router, private userService: UserService) {}
+  // usuarioGuardado = 'edu';
+  // contraseñaGuardada = '1234';
 
   @ViewChild('username') usernameInput!: ElementRef;
   @ViewChild('password') passwordInput!: ElementRef;
 
   onSubmit() {
-    let isValid = true;
+    const username = this.usernameInput.nativeElement.value;
+    const password = this.passwordInput.nativeElement.value;
+    const user = this.userService.getUserByUsername(username);
 
-    if (this.usernameInput.nativeElement.value !== this.usuarioGuardado || this.passwordInput.nativeElement.value !== this.contraseñaGuardada) {
-      isValid = false;
+    if (!user || user.password !== password) {
       alert('Usuario o contraseña incorrectos');
+      return;
     }
 
-    if (isValid) {
-      alert('usuario valido');
-      // Aquí se redirige a index.html si el usuario y la contraseña son correctos
-      this.router.navigate(['/index']);
-    } else {
-      alert('Por favor, corrige los errores en el formulario');
-    }
+    alert('Usuario valido');
+    this.userService.setCurrentUser(user);
+    this.router.navigate(['/index']);
   }
 }
