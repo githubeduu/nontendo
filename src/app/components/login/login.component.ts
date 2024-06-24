@@ -3,6 +3,18 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/usuario.service';
 
+/**
+ * @description
+ * Componente para el inicio de sesión de usuarios.
+ * Permite a los usuarios autenticarse ingresando su nombre de usuario y contraseña.
+ */
+
+/**
+ * @usageNotes
+ * Este componente captura las credenciales del usuario a través de un formulario y las valida con el servicio de usuario.
+ * Si las credenciales son correctas, el usuario se autentica y se redirige a la página de inicio.
+ */
+
 @Component({
   selector: 'app-login',
   standalone: true,

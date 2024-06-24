@@ -90,8 +90,8 @@
                 <div class="form-floating">
                   <label for="pwd">Contraseña</label>
                   <input type="password" class="form-control" id="pwd" formControlName="password" placeholder="Enter password">              
-                  <div *ngIf="formSubmitted && (miFormulario.get('password')?.hasError('required') || miFormulario.get('password')?.hasError('minlength'))" class="text-danger">
-                    La contraseña debe tener al menos 8 caracteres.
+                  <div *ngIf="formSubmitted && (miFormulario.get('password')?.hasError('required') || miFormulario.get('password')?.hasError('minlength') || miFormulario.get('password')?.hasError('invalidPassword'))" class="text-danger">
+                    La contraseña debe tener al menos 8 caracteres e incluir al menos un número, una letra y un carácter especial.
                   </div>
                 </div>
               </div>

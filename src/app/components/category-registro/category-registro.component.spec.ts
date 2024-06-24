@@ -67,8 +67,8 @@ describe('CategoryRegistroComponent', () => {
     component.miFormulario.setValue({
       email: 'test@example.com',
       name: 'Test User',
-      password: 'password123',
-      confirmPassword: 'password123',
+      password: 'Password#123',
+      confirmPassword: 'Password#123',
       username: 'testuser',
       birthdate: '2000-01-01'
     });

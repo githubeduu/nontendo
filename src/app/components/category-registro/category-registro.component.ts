@@ -4,6 +4,18 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validatio
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/usuario.service';
 
+/**
+ * @description
+ * Componente para el registro de usuarios.
+ * Permite a los usuarios registrarse ingresando su nombre, email, nombre de usuario, contraseña y fecha de nacimiento.
+ */
+
+/**
+ * @usageNotes
+ * Este componente utiliza un formulario reactivo para recopilar la información del usuario.
+ * Se deben cumplir ciertos requisitos de validación para completar el formulario correctamente.
+ */
+
 @Component({
   selector: 'app-category-registro',
   standalone: true,
@@ -47,6 +59,11 @@ export class CategoryRegistroComponent {
     }, { validators: this.passwordMatchValidator });
   }
 
+  /**
+   * Valida que la contraseña cumpla con los requisitos mínimos.
+   * @param control Control de formulario a validar.
+   * @returns Objeto con el error si la contraseña es inválida, o nulo si es válida.
+   */
   validatePassword(control: any): { [key: string]: boolean } | null {
     const password = control.value;
     const hasNumber = /\d/.test(password);
@@ -57,12 +74,22 @@ export class CategoryRegistroComponent {
     return isValid ? null : { invalidPassword: true };
   }
   
+   /**
+   * Valida que la contraseña coincida con la confirmación de contraseña.
+   * @param form Formulario completo para validar.
+   * @returns Objeto con el error si las contraseñas no coinciden, o nulo si coinciden.
+   */
   private passwordMatchValidator(form: FormGroup): ValidationErrors | null {
     const password = form.get('password')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
     return password === confirmPassword ? null : { mismatch: true };
   }
 
+   /**
+   * Valida que la fecha de nacimiento sea mayor a la edad mínima especificada.
+   * @param minAge Edad mínima permitida.
+   * @returns Función de validación para la fecha de nacimiento.
+   */
   private minimumAgeValidator(minAge: number) {
     return (control: AbstractControl): ValidationErrors | null => {
       const birthdate = new Date(control.value);
