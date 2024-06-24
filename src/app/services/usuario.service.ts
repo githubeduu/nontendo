@@ -1,3 +1,4 @@
+// user.service.ts
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,11 +6,12 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
   private users: any[] = [];
-  private currentUser: any | null = null;
+  private currentUser: any = null;
 
   constructor() {
     if (this.isLocalStorageAvailable()) {
       this.users = JSON.parse(localStorage.getItem('users') || '[]');
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
     }
   }
 
@@ -36,6 +38,7 @@ export class UserService {
   private updateLocalStorage() {
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem('users', JSON.stringify(this.users));
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
     }
   }
 
@@ -45,13 +48,27 @@ export class UserService {
 
   setCurrentUser(user: any) {
     this.currentUser = user;
+    this.updateLocalStorage();
   }
 
-  getCurrentUser(): any | null {
+  getCurrentUser() {
     return this.currentUser;
+  }
+
+  updateUser(updatedUser: any) {
+    const index = this.users.findIndex(user => user.username === this.currentUser.username);
+    if (index !== -1) {
+      this.users[index] = {
+        ...this.users[index],
+        ...updatedUser
+      };
+      this.currentUser = this.users[index];
+      this.updateLocalStorage();
+    }
   }
 
   logout() {
     this.currentUser = null;
+    this.updateLocalStorage();
   }
 }

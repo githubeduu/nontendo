@@ -7,6 +7,8 @@ import { CategoryPlaystation4Component } from './components/category-playstation
 import { CategoryNintendoSwitchComponent } from './components/category-nintendo-switch/category-nintendo-switch.component';
 import { LoginComponent } from './components/login/login.component';
 import { CarroComponent } from './components/carro/carro.component';
+import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -17,5 +19,7 @@ export const routes: Routes = [
     { path: 'categoryXboxSeries', component: CategoryXboxSeriesComponent },
     { path: 'categoryRegistro', component: CategoryRegistroComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'carro', component: CarroComponent }
+    { path: 'carro', component: CarroComponent },
+    { path: 'recuperarContrasena', component: RecuperarContrasenaComponent },
+    { path: 'cuenta', component: CuentaComponent },
 ];

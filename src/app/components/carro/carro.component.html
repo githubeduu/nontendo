@@ -36,14 +36,32 @@
               </ul>
             </li>     
         </ul>
-        <ul class="navbar-nav ml-auto">
-          <li id="loginNavItem" class="nav-item">
-              <a class="nav-link" [routerLink]="['/login']">Login</a>
+        <ul class="navbar-nav ml-auto" *ngIf="currentUser">
+          <li class="nav-item">
+            <span class="nav-link">Hola, {{ currentUser.username }}</span>
           </li>
           <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
-          </li>                          
-      </ul>
+            <a class="nav-link cursor-pointer" [routerLink]="['/cuenta']">Mi Cuenta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
+          </li>                                     
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <a [routerLink]="['/carro']" class="btn btn-outline-danger">
+              <i class="bi bi-cart-fill"></i>
+            </a>
+          </li> 
+        </ul>
       </div>
     </div>
   </nav>

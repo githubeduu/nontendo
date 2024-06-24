@@ -15,11 +15,19 @@ export class CategoryRegistroComponent {
   miFormulario!: FormGroup;
   showSubMenu: boolean = false;
   formSubmitted: boolean = false;
+  currentUser: any;
 
   constructor(private fb: FormBuilder,
               private router: Router,
               private userService: UserService
-  ) {}
+  ) {
+    this.currentUser = this.userService.getCurrentUser(); 
+  }
+
+  logout() {
+    this.userService.logout(); // Elimina el usuario autenticado
+    this.currentUser = null;
+  }
   
   ngOnInit(): void {
     this.miFormulario = this.fb.group({

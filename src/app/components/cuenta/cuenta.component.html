@@ -36,39 +36,55 @@
                 </ul>
               </li>     
           </ul>
-          <ul class="navbar-nav ml-auto">
-            <li id="loginNavItem" class="nav-item">
-                <a class="nav-link" [routerLink]="['/login']">Login</a>
+          <ul class="navbar-nav ml-auto" *ngIf="currentUser">
+            <li class="nav-item">
+              <span class="nav-link">Hola, {{ currentUser.username }}</span>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
+              <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>
             </li>
+          </ul>
+          <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/login']">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
+            </li>                                     
+          </ul>
+          <ul class="navbar-nav ml-auto">
             <li>
               <a [routerLink]="['/carro']" class="btn btn-outline-danger">
                 <i class="bi bi-cart-fill"></i>
               </a>
-            </li>                 
-        </ul>
+            </li> 
+          </ul>
         </div>
       </div>
     </nav>
   </header>
-<main class="container mt-5">
-  <h2 class="text-center mb-4">Login</h2>
-  <form id="loginForm" (submit)="onSubmit()">
-      <div class="form-group">
-          <label for="username">Nombre de Usuario</label>
-          <input type="text" class="form-control" id="username" name="username" required #username>
-          <div class="invalid-feedback">Por favor, ingresa tu nombre de usuario.</div>
+  <main>
+    <h2 class="text-center mb-4">Mi Cuenta</h2>
+    <section id="cuenta" class="container mt-3">
+      <div class="row justify-content-center">
+        <div class="col-md-6 px-5">
+          <form [formGroup]="miFormulario" (ngSubmit)="submitForm()">
+            <div class="form-group form-floating mb-3">
+              <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+            <div class="form-group form-floating mb-3">
+              <input type="email" class="form-control" id="email" formControlName="email">
+            </div>
+            <div class="form-group form-floating mb-3">
+              <input type="text" class="form-control" id="username" formControlName="username">
+            </div>
+            <div class="form-group mb-3 position-relative">
+              <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+            <button type="submit" class="btn btn-submit btn-primary w-100">Guardar cambios</button>
+          </form>
+        </div>
       </div>
-      <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" class="form-control" id="password" name="password" required #password>
-          <div class="invalid-feedback">Por favor, ingresa tu contraseña.</div>
-      </div>
-      <button id="loginButton" class="btn btn-primary" type="submit">Ingresar</button>
-      <div class="mt-2">
-        <a routerLink="/recuperarContrasena">Recuperar Contraseña</a>
-      </div>
-  </form>  
-</main>
+    </section>
+  </main>
+  

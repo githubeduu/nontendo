@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CarroService } from '../../services/carro.service';
+import { UserService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-category-playstation-5',
@@ -12,6 +13,16 @@ import { CarroService } from '../../services/carro.service';
 })
 export class CategoryPlaystation5Component {
   carroService = inject(CarroService);
+  currentUser: any;
+  constructor( private userService: UserService
+  ) {
+    this.currentUser = this.userService.getCurrentUser(); 
+  }
+
+  logout() {
+    this.userService.logout(); // Elimina el usuario autenticado
+    this.currentUser = null;
+  }
 
 
   agregarAlCarro(producto : any){

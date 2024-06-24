@@ -12,8 +12,6 @@ import { UserService } from '../../services/usuario.service';
 })
 export class LoginComponent {
   constructor(private router: Router, private userService: UserService) {}
-  // usuarioGuardado = 'edu';
-  // contraseñaGuardada = '1234';
 
   @ViewChild('username') usernameInput!: ElementRef;
   @ViewChild('password') passwordInput!: ElementRef;
