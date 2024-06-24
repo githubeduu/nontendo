@@ -1,58 +1,71 @@
 <header>
-    <nav class="navbar navbar-expand-sm navbar-light">
-      <div class="container-fluid">
-        <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
-            </li>       
-            <li class="nav-item dropdown">
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
+          </li>       
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Playstation
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Playstation
+                Nintendo
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+                <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
               </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Nintendo
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Xbox
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
-                </ul>
-              </li>     
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li id="loginNavItem" class="nav-item">
-                <a class="nav-link" [routerLink]="['/login']">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
-            </li>
-            <li>
-                <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
-                    <i class="bi bi-cart-fill"></i>
-                </a>
-            </li>                
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Xbox
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+                <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
+              </ul>
+            </li>     
         </ul>
-        </div>
+        <ul class="navbar-nav ml-auto" *ngIf="currentUser">
+          <li class="nav-item">
+            <span class="nav-link">Hola, {{ currentUser.username }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" [routerLink]="['/cuenta']">Mi Cuenta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
+          </li>                                     
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <a [routerLink]="['/carro']" class="btn btn-outline-danger">
+              <i class="bi bi-cart-fill"></i>
+            </a>
+          </li> 
+        </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
   <main>
     <section id="games" class="container mt-4">
         <div class="row">
@@ -63,6 +76,7 @@
                         <h5 class="card-title">Dragon FighterZ</h5>
                         <p class="card-text">Experimenta intensas batallas 3v3 en Dragon Ball FighterZ. Disfruta de gráficos espectaculares y combates llenos de acción con tus personajes favoritos de Dragon Ball en este emocionante juego de lucha.</p>
                         <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Dragon FighterZ', precio: 45990, id: 1 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -73,6 +87,7 @@
                         <h5 class="card-title">Gotham</h5>
                         <p class="card-text">En 'Gotham Knights' para PS5, protege Gotham tras la muerte de Batman. Juega como Nightwing, Batgirl, Robin y Red Hood en un juego de acción RPG, enfrentando a villanos emblemáticos y resolviendo crímenes.</p>
                         <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Gotham', precio: 29990, id: 2 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -83,6 +98,7 @@
                         <h5 class="card-title">Grand Theft Auto V</h5>
                         <p class="card-text">Sumérgete en el mundo criminal de Los Santos en 'Grand Theft Auto V'. Controla a tres personajes únicos en una historia llena de acción, robos y caos en un vasto mundo abierto con múltiples actividades y misiones.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Grand Theft Auto V', precio: 24990, id: 3 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -93,6 +109,7 @@
                         <h5 class="card-title">Leo the Firefighter Cat</h5>
                         <p class="card-text">Únete a Leo, el valiente gato bombero, en esta aventura para PS5. Ayuda a Leo a salvar vidas y apagar incendios en una ciudad llena de peligros y desafíos, combinando acción, estrategia y diversión.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Leo the Firefighter Cat', precio: 24990, id: 4 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>           
@@ -105,6 +122,7 @@
                         <h5 class="card-title">NBA 2K22</h5>
                         <p class="card-text">Vive la emoción del baloncesto con NBA 2K22 para PS5. Experimenta gráficos realistas, jugabilidad mejorada y modos de juego como MyCareer, MyTeam y más. Compite con equipos y estrellas de la NBA.</p>
                         <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'NBA 2K22', precio: 45990, id: 5 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -115,6 +133,7 @@
                         <h5 class="card-title">Saints Row</h5>
                         <p class="card-text">Explora el reinicio de 'Saints Row' para PS5, donde formas tu propio imperio criminal en Santo Ileso. Disfruta de una jugabilidad de mundo abierto llena de acción, humor y caos en una ciudad vibrante.</p>
                         <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Saints Row', precio: 29990, id: 6 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -125,6 +144,7 @@
                         <h5 class="card-title">Tiny Tina's Wonderlands</h5>
                         <p class="card-text">Embárcate en una épica aventura de fantasía en 'Tiny Tina's Wonderlands' para PS5. Crea tu héroe, combate monstruos y explora mundos mágicos en esta caótica y divertida experiencia RPG de los creadores de Borderlands.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Tiny Tinas Wonderlands', precio: 24990, id: 7 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -135,6 +155,7 @@
                         <h5 class="card-title">WWE 2K23</h5>
                         <p class="card-text">Experimenta la acción del wrestling con 'WWE 2K23' para PS5. Disfruta de gráficos realistas, un roster de superestrellas actualizado, modos de juego mejorados y la emoción del ring en tus manos.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'WWE 2K23', precio: 24990, id: 8 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>              

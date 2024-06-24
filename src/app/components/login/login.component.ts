@@ -1,6 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../services/usuario.service';
+
+/**
+ * @description
+ * Componente para el inicio de sesión de usuarios.
+ * Permite a los usuarios autenticarse ingresando su nombre de usuario y contraseña.
+ */
+
+/**
+ * @usageNotes
+ * Este componente captura las credenciales del usuario a través de un formulario y las valida con el servicio de usuario.
+ * Si las credenciales son correctas, el usuario se autentica y se redirige a la página de inicio.
+ */
 
 @Component({
   selector: 'app-login',
@@ -10,26 +23,23 @@ import { RouterModule } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  usuarioGuardado = 'edu';
-  contraseñaGuardada = '1234';
+  constructor(private router: Router, private userService: UserService) {}
 
   @ViewChild('username') usernameInput!: ElementRef;
   @ViewChild('password') passwordInput!: ElementRef;
 
   onSubmit() {
-    let isValid = true;
+    const username = this.usernameInput.nativeElement.value;
+    const password = this.passwordInput.nativeElement.value;
+    const user = this.userService.getUserByUsername(username);
 
-    if (this.usernameInput.nativeElement.value !== this.usuarioGuardado || this.passwordInput.nativeElement.value !== this.contraseñaGuardada) {
-      isValid = false;
+    if (!user || user.password !== password) {
       alert('Usuario o contraseña incorrectos');
+      return;
     }
 
-    if (isValid) {
-      alert('usuario valido');
-      // Aquí se redirige a index.html si el usuario y la contraseña son correctos
-      window.location.href = 'index.html';
-    } else {
-      alert('Por favor, corrige los errores en el formulario');
-    }
+    alert('Usuario valido');
+    this.userService.setCurrentUser(user);
+    this.router.navigate(['/index']);
   }
 }

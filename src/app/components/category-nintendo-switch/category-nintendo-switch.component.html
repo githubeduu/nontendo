@@ -1,58 +1,71 @@
 <header>
-    <nav class="navbar navbar-expand-sm navbar-light">
-      <div class="container-fluid">
-        <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
-            </li>       
-            <li class="nav-item dropdown">
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
+          </li>       
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Playstation
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Playstation
+                Nintendo
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+                <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
               </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Nintendo
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Xbox
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
-                </ul>
-              </li>     
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li id="loginNavItem" class="nav-item">
-                <a class="nav-link" [routerLink]="['/login']">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
-            </li>
-            <li>
-                <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
-                    <i class="bi bi-cart-fill"></i>
-                </a>
-            </li>                
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Xbox
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+                <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
+              </ul>
+            </li>     
         </ul>
-        </div>
+        <ul class="navbar-nav ml-auto" *ngIf="currentUser">
+          <li class="nav-item">
+            <span class="nav-link">Hola, {{ currentUser.username }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" [routerLink]="['/cuenta']">Mi Cuenta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
+          </li>                                     
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <a [routerLink]="['/carro']" class="btn btn-outline-danger">
+              <i class="bi bi-cart-fill"></i>
+            </a>
+          </li> 
+        </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
   <main>
     <section id="games" class="container mt-4">
         <div class="row">
@@ -63,6 +76,7 @@
                         <h5 class="card-title">Burnout Paradise Remastered</h5>
                         <p class="card-text">fue lanzado para Nintendo Switch el 19 de junio de 2020. Es una versión remasterizada del juego original lanzado en 2008, que incluye gráficos mejorados y todo el contenido descargable lanzado previamente.</p>
                         <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Burnout Paradise Remastered', precio: 45990, id: 1 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -73,6 +87,7 @@
                         <h5 class="card-title">Diesel Legacy: The Brazen Age</h5>
                         <p class="card-text">es un juego de estrategia y supervivencia postapocalíptico donde los jugadores construyen, reclutan y luchan por sobrevivir en un mundo lleno de peligros y decisiones difíciles.</p>
                         <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Diesel Legacy: The Brazen Age', precio: 29990, id: 2 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -83,6 +98,7 @@
                         <h5 class="card-title">F.I.S.T: Forged in Shadow Torch</h5>
                         <p class="card-text">En "F.I.S.T: Forged in Shadow Torch", juegas como un conejo mecanizado que usa un gran puño para combatir en un mundo distópico de máquinas y criaturas, combinando acción, exploración y plataformas en un metroidvania único.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'F.I.S.T: Forged in Shadow Torch', precio: 24990, id: 3 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -93,6 +109,7 @@
                         <h5 class="card-title">LEGO Los Increíbles</h5>
                         <p class="card-text">En "LEGO Los Increíbles", vive las aventuras de la familia Parr en un mundo lleno de bloques. Combina habilidades únicas y lucha contra el crimen en una divertida experiencia LEGO.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'LEGO Los Increíbles', precio: 24990, id: 4 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>               
@@ -105,6 +122,7 @@
                         <h5 class="card-title">Mario + Rabbids Kingdom Battle</h5>
                         <p class="card-text"> es un juego de estrategia por turnos donde los personajes de Mario y los Rabbids se unen en una aventura cómica. Con un estilo artístico vibrante y desafíos estratégicos, es una combinación única de dos mundos icónicos.</p>
                         <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Mario + Rabbids Kingdom Battle', precio: 45990, id: 5 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -115,6 +133,7 @@
                         <h5 class="card-title">Mortal Kombat 11</h5>
                         <p class="card-text"> es un juego de lucha desarrollado por NetherRealm Studios. Presenta una jugabilidad intensa y violenta, con una variedad de personajes icónicos y nuevos luchadores. El juego también incluye un modo historia cinematográfico y profundo, así como opciones multijugador competitivas.</p>
                         <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Mortal Kombat 11', precio: 29990, id: 6 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -125,6 +144,7 @@
                         <h5 class="card-title">My Hero One's Justice</h5>
                         <p class="card-text">es un juego de lucha basado en "My Hero Academia", donde los personajes usan habilidades únicas en batallas intensas uno contra uno en entornos destructibles.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'My Hero Ones Justice', precio: 24990, id: 7 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -135,6 +155,7 @@
                         <h5 class="card-title">Super Dragon Ball Heroes: World Mission</h5>
                         <p class="card-text">es un juego de cartas estratégico basado en el universo de Dragon Ball. Los jugadores crean decks con personajes de la serie y participan en batallas tácticas. Ofrece una amplia gama de personajes y habilidades, así como un modo historia emocionante.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Super Dragon Ball Heroes: World Mission', precio: 24990, id: 8 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>                

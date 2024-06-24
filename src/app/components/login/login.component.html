@@ -44,10 +44,10 @@
                 <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
             </li>
             <li>
-                <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
-                    <i class="bi bi-cart-fill"></i>
-                </a>
-            </li>                
+              <a [routerLink]="['/carro']" class="btn btn-outline-danger">
+                <i class="bi bi-cart-fill"></i>
+              </a>
+            </li>                 
         </ul>
         </div>
       </div>
@@ -67,5 +67,8 @@
           <div class="invalid-feedback">Por favor, ingresa tu contraseña.</div>
       </div>
       <button id="loginButton" class="btn btn-primary" type="submit">Ingresar</button>
-  </form>
+      <div class="mt-2">
+        <a routerLink="/recuperarContrasena">Recuperar Contraseña</a>
+      </div>
+  </form>  
 </main>

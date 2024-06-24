@@ -1,58 +1,71 @@
 <header>
-    <nav class="navbar navbar-expand-sm navbar-light">
-      <div class="container-fluid">
-        <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
-            </li>       
-            <li class="nav-item dropdown">
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
+          </li>       
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Playstation
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Playstation
+                Nintendo
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+                <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
               </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Nintendo
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Xbox
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
-                </ul>
-              </li>     
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li id="loginNavItem" class="nav-item">
-                <a class="nav-link" [routerLink]="['/login']">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
-            </li>
-            <li>
-                <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
-                    <i class="bi bi-cart-fill"></i>
-                </a>
-            </li>                
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Xbox
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+                <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
+              </ul>
+            </li>     
         </ul>
-        </div>
+        <ul class="navbar-nav ml-auto" *ngIf="currentUser">
+          <li class="nav-item">
+            <span class="nav-link">Hola, {{ currentUser.username }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" [routerLink]="['/cuenta']">Mi Cuenta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
+          </li>                                     
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <a [routerLink]="['/carro']" class="btn btn-outline-danger">
+              <i class="bi bi-cart-fill"></i>
+            </a>
+          </li> 
+        </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
   <main>
     <section id="games" class="container mt-4">
         <div class="row">
@@ -62,8 +75,8 @@
                     <div class="card-body">
                         <h5 class="card-title">2K Drive</h5>
                         <p class="card-text">es un juego de carreras desarrollado por Lucid Games y publicado por 2K Games para dispositivos móviles. Ofrece una variedad de modos de juego, incluidas carreras, desafíos, eventos multijugador y más. Los jugadores pueden competir en diferentes tipos de carreras y desafíos en varios entornos, desde pistas de carreras hasta calles urbanas.</p>
-                        <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary agregar-carrito" data-id="1">Agregar al Carrito</button>
+                        <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>          
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: '2K Drive', precio: 45990, id: 1 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -74,7 +87,7 @@
                         <h5 class="card-title">Battlefield 2042</h5>
                         <p class="card-text">es una serie de videojuegos de disparos en primera persona desarrollada por EA DICE y publicada por Electronic Arts. Conocida por sus grandes mapas, vehículos y batallas multijugador, la serie se centra en la guerra moderna y ha sido elogiada por su jugabilidad y gráficos.</p>
                         <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary agregar-carrito" data-id="2">Agregar al Carrito</button>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Battlefield 2042', precio: 29990, id: 2 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -85,15 +98,10 @@
                         <h5 class="card-title">Grand Theft Auto: San Andreas</h5>
                         <p class="card-text">para Xbox Series X ofrece la clásica aventura de CJ con gráficos mejorados y tiempos de carga más rápidos, manteniendo su icónica jugabilidad y narrativa.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary agregar-carrito" data-id="3">Agregar al Carrito</button>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Grand Theft Auto: San Andreas', precio: 24990, id: 3 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>                   
         </div>              
     </section>
-    <div id="carrito" class="container mt-4">            
-        <ul id="listaProductos" class="list-group mb-3">                 
-        </ul>
-
-    </div>
 </main>

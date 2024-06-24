@@ -1,55 +1,131 @@
 <header>
-    <nav class="navbar navbar-expand-sm navbar-light">
-      <div class="container-fluid">
-        <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
-            </li>       
-            <li class="nav-item dropdown">
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
+          </li>       
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Playstation
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Playstation
+                Nintendo
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+                <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
               </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Nintendo
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Xbox
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
-                </ul>
-              </li>     
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li id="loginNavItem" class="nav-item">
-                <a class="nav-link" [routerLink]="['/login']">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
-            </li>
-            <li>
-                <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
-                    <i class="bi bi-cart-fill"></i>
-                </a>
-            </li>                
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Xbox
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+                <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
+              </ul>
+            </li>     
         </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="currentUser">
+          <li class="nav-item">
+            <span class="nav-link">Hola, {{ currentUser.username }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" [routerLink]="['/cuenta']">Mi Cuenta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
+          </li>                                     
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <a [routerLink]="['/carro']" class="btn btn-outline-danger">
+              <i class="bi bi-cart-fill"></i>
+            </a>
+          </li> 
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+  <main>
+    <section id="register" class="container mt-3">
+      <div class="row justify-content-center">
+        <div class="col-md-6 px-5">
+          <form [formGroup]="miFormulario" (ngSubmit)="submitForm()">
+            <div class="form-group form-floating mb-3" [ngClass]="{'focused': miFormulario.get('name')?.dirty || miFormulario.get('name')?.value}">
+              <label for="name">Nombre completo</label>
+              <input type="text" class="form-control" id="name" formControlName="name">          
+              <div *ngIf="formSubmitted && miFormulario.get('name')?.hasError('required')" class="text-danger">
+                Por favor, introduce tu nombre completo.
+              </div>
+            </div>
+            <div class="form-group form-floating mb-3" [ngClass]="{'focused': miFormulario.get('email')?.dirty || miFormulario.get('email')?.value}">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email">
+              <div *ngIf="formSubmitted && miFormulario.get('email')?.hasError('email')" class="text-danger">
+                Por favor, introduce un email válido.
+              </div>
+            </div>
+            <div class="form-group mb-3 form-floating mb-3" [ngClass]="{'focused': miFormulario.get('password')?.dirty || miFormulario.get('password')?.value}">
+              <div class="input-group">
+                <div class="form-floating">
+                  <label for="pwd">Contraseña</label>
+                  <input type="password" class="form-control" id="pwd" formControlName="password" placeholder="Enter password">              
+                  <div *ngIf="formSubmitted && (miFormulario.get('password')?.hasError('required') || miFormulario.get('password')?.hasError('minlength') || miFormulario.get('password')?.hasError('invalidPassword'))" class="text-danger">
+                    La contraseña debe tener al menos 8 caracteres e incluir al menos un número, una letra y un carácter especial.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-3 position-relative" [ngClass]="{'focused': miFormulario.get('confirmPassword')?.dirty || miFormulario.get('confirmPassword')?.value}">
+              <div class="input-group">
+                <div class="form-floating">
+                  <label for="repeat-pwd">Repetir contraseña</label>
+                  <input type="password" class="form-control" id="repeat-pwd" formControlName="confirmPassword" placeholder="Enter password">              
+                  <div *ngIf="formSubmitted && miFormulario.hasError('mismatch') && miFormulario.get('confirmPassword')?.touched" class="text-danger">
+                    Las contraseñas no coinciden.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-floating mb-3" [ngClass]="{'focused': miFormulario.get('username')?.dirty || miFormulario.get('username')?.value}">
+              <input type="text" class="form-control" id="username" formControlName="username">
+              <label for="username">Nombre de usuario</label>
+              <div *ngIf="formSubmitted && miFormulario.get('username')?.hasError('required')" class="text-danger">
+                Por favor, introduce un nombre de usuario.
+              </div>
+            </div>
+            <div class="form-group form-floating mb-3" [ngClass]="{'focused': miFormulario.get('birthdate')?.dirty || miFormulario.get('birthdate')?.value}">
+              <input type="date" class="form-control" id="date" formControlName="birthdate" placeholder="Enter date">
+              <label for="date">Fecha de nacimiento</label>
+              <div *ngIf="formSubmitted && (miFormulario.get('birthdate')?.hasError('required') || miFormulario.get('birthdate')?.hasError('minAge'))" class="text-danger">
+                Debes tener al menos 16 años para registrarte.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-submit btn-primary w-100">Registrarse</button>
+          </form>
+          <p class="mt-4 text-center">¿Tienes una cuenta? <a routerLink="/login" class="link-dark">Inicia sesión</a></p>
         </div>
       </div>
-    </nav>
-  </header>
+    </section>
+  </main>
+  

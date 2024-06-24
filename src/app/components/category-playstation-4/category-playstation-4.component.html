@@ -1,58 +1,71 @@
 <header>
-    <nav class="navbar navbar-expand-sm navbar-light">
-      <div class="container-fluid">
-        <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
-            </li>       
-            <li class="nav-item dropdown">
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
+          </li>       
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Playstation
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Playstation
+                Nintendo
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
+                <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
               </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Nintendo
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Xbox
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
-                </ul>
-              </li>     
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li id="loginNavItem" class="nav-item">
-                <a class="nav-link" [routerLink]="['/login']">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
-            </li>
-            <li>
-                <a id="verCarritoBtn" href="#" class="btn btn-outline-danger">
-                    <i class="bi bi-cart-fill"></i>
-                </a>
-            </li>                
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Xbox
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
+                <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
+              </ul>
+            </li>     
         </ul>
-        </div>
+        <ul class="navbar-nav ml-auto" *ngIf="currentUser">
+          <li class="nav-item">
+            <span class="nav-link">Hola, {{ currentUser.username }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" [routerLink]="['/cuenta']">Mi Cuenta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
+          </li>                                     
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <a [routerLink]="['/carro']" class="btn btn-outline-danger">
+              <i class="bi bi-cart-fill"></i>
+            </a>
+          </li> 
+        </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
   <main>
     <section id="games" class="container mt-4">
         <div class="row">
@@ -63,6 +76,7 @@
                         <h5 class="card-title">Acrogue</h5>
                         <p class="card-text">Acrogue es un videojuego de rol y aventuras con elementos de acción y mazmorras, donde exploras mazmorras generadas aleatoriamente en busca de tesoros y enfrentas desafíos únicos.</p>
                         <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Acrogue', precio: 45990, id: 1 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -73,6 +87,7 @@
                         <h5 class="card-title">Apex Legends</h5>
                         <p class="card-text">Apex Legends es un juego de disparos en primera persona tipo battle royale, gratuito para PlayStation 4. Los jugadores forman equipos, eligen personajes con habilidades únicas y luchan hasta que solo quede un equipo en pie.</p>
                         <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Apex Legends', precio: 29990, id: 2 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -83,6 +98,7 @@
                         <h5 class="card-title">Batman: Arkham Knight</h5>
                         <p class="card-text">Batman: Arkham Knight es un juego de acción y aventuras donde controlas a Batman en su lucha contra el crimen en Gotham City, enfrentando a villanos icónicos como el Espantapájaros y el Joker. Explora la ciudad, resuelve acertijos y disfruta de combates fluidos en este título aclamado por la crítica.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Batman: Arkham Knight', precio: 24990, id: 3 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -93,6 +109,7 @@
                         <h5 class="card-title">Borderlands</h5>
                         <p class="card-text">es una serie de videojuegos de disparos en primera persona con elementos de rol y humor negro. Ambientado en un mundo postapocalíptico, el juego se destaca por su estilo gráfico único y su sistema de generación aleatoria de armas. Los jugadores exploran el mundo, completan misiones y luchan contra enemigos, todo mientras disfrutan de un estilo cómico y exagerado.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Borderlands', precio: 24990, id: 4 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>               
@@ -105,6 +122,7 @@
                         <h5 class="card-title">For Honor</h5>
                         <p class="card-text">es un juego de combate cuerpo a cuerpo en tercera persona desarrollado por Ubisoft. Los jugadores eligen entre varias facciones históricas de guerreros, como caballeros, samuráis y vikingos, y participan en batallas intensas y tácticas. El juego se centra en el combate uno contra uno y en equipo, con un sistema de combate avanzado que requiere habilidad y estrategia para dominar.</p>
                         <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'For Honor', precio: 45990, id: 5 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -115,6 +133,7 @@
                         <h5 class="card-title">Lost Judgment</h5>
                         <p class="card-text">Es un videojuego de acción y aventuras desarrollado por Ryu Ga Gotoku Studio y publicado por Sega. Es la secuela de "Judgment" y sigue al detective privado Takayuki Yagami mientras resuelve casos en Kamurocho y Yokohama. El juego combina elementos de investigación, combate y exploración en un entorno de mundo abierto.</p>
                         <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Lost Judgment', precio: 29990, id: 6 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -125,6 +144,7 @@
                         <h5 class="card-title">Naruto Shippuden: Ultimate Ninja Storm 4</h5>
                         <p class="card-text">es un juego de lucha desarrollado por CyberConnect2 y publicado por Bandai Namco Entertainment. Basado en el manga y anime "Naruto", este juego permite a los jugadores luchar en batallas épicas utilizando personajes y habilidades del universo de Naruto. Con gráficos impresionantes y mecánicas de juego sólidas, es un título popular entre los fans de la serie.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Naruto Shippuden: Ultimate Ninja Storm 4', precio: 24990, id: 7 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>
@@ -135,6 +155,7 @@
                         <h5 class="card-title">Watch Dogs</h5>
                         <p class="card-text">es un juego de mundo abierto donde los jugadores asumen el papel de un hacker que utiliza habilidades informáticas para controlar la ciudad de Chicago y obtener venganza.</p>
                         <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
+                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Watch Dogs', precio: 24990, id: 8 })">Agregar al Carrito</button>
                     </div>
                 </div>
             </div>              
