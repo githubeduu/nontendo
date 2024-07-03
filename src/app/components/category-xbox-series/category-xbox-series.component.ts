@@ -11,7 +11,7 @@ import { JsonService } from '../../services/json.service';
   standalone: true,
   imports: [CommonModule, RouterModule, HttpClientModule], // Agrega HttpClientModule a imports
   templateUrl: './category-xbox-series.component.html',
-  styleUrls: ['./category-xbox-series.component.scss'] // Corrige el nombre a styleUrls
+  styleUrls: ['./category-xbox-series.component.scss']
 })
 export class CategoryXboxSeriesComponent {
   carroService = inject(CarroService);
@@ -25,7 +25,7 @@ export class CategoryXboxSeriesComponent {
   }
 
   logout() {
-    this.userService.logout(); // Elimina el usuario autenticado
+    this.userService.logout();
     this.currentUser = null;
   }
 

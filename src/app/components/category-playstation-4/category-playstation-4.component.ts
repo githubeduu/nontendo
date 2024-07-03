@@ -3,18 +3,23 @@ import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CarroService } from '../../services/carro.service';
 import { UserService } from '../../services/usuario.service';
+import { JsonService } from '../../services/json.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-category-playstation-4',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule],
   templateUrl: './category-playstation-4.component.html',
   styleUrl: './category-playstation-4.component.scss'
 })
 export class CategoryPlaystation4Component {
   carroService = inject(CarroService);
   currentUser: any;
-  constructor( private userService: UserService
+  products: any[] = [];
+  filteredProducts: any[] = [];
+  constructor( private userService: UserService,
+    private jsonService: JsonService
   ) {
     this.currentUser = this.userService.getCurrentUser(); 
   }
@@ -28,5 +33,25 @@ export class CategoryPlaystation4Component {
   agregarAlCarro(producto : any){
     this.carroService.agregarAlCarro(producto);
     alert('Producto Agregado correctamente');
+  }
+
+  ngOnInit(): void {
+    this.jsonService.getProducts().subscribe(
+      (data: any) => {
+        console.log('Received data:', data); // Verificar los datos recibidos
+        if (data && data.productosList) {
+          this.products = data.productosList;
+          this.filteredProducts = this.products.filter(product => product.categoriaid === 3);
+          console.log('Filtered products:', this.filteredProducts); // Verificar productos filtrados
+        } else {
+          console.error('Response format is unexpected:', data);
+          this.products = []; // Manejo de respuesta inesperada
+        }
+      },
+      error => {
+        console.error('Error fetching products:', error);
+        // Manejo de errores
+      }
+    );
   }
 }
