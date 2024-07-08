@@ -1,5 +1,7 @@
 // user.service.ts
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 /**
  * @description
@@ -19,91 +21,38 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
+
+  private baseUrl = 'http://localhost:8080/usuario';
+
+  constructor(private http: HttpClient) {
+
+  }
+
   private users: any[] = [];
   private currentUser: any = null;
 
-  constructor() {
-    if (this.isLocalStorageAvailable()) {
-      this.users = JSON.parse(localStorage.getItem('users') || '[]');
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
-    }
+  addUser(user: any): Observable<any> {
+    return this.http.post(this.baseUrl, user);
   }
 
-   /**
-   * Verifica si el almacenamiento local está disponible.
-   * @returns `true` si el almacenamiento local está disponible, `false` en caso contrario.
-   */
-  private isLocalStorageAvailable(): boolean {
-    try {
-      const test = 'test';
-      localStorage.setItem(test, test);
-      localStorage.removeItem(test);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
 
-   /**
-   * Agrega un nuevo usuario.
-   * @param user Usuario a agregar.
-   */
-  addUser(user: any) {
-    this.users.push(user);
-    this.updateLocalStorage();
-  }
-
-  /**
-   * Obtiene la lista de usuarios.
-   * @returns Lista de usuarios.
-   */
-  getUsers() {
-    return this.users;
-  }
-
-  private updateLocalStorage() {
-    if (this.isLocalStorageAvailable()) {
-      localStorage.setItem('users', JSON.stringify(this.users));
-      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    }
-  }
-
-    /**
-   * Obtiene un usuario por nombre de usuario.
-   * @param username Nombre de usuario del usuario a buscar.
-   * @returns El usuario encontrado o `undefined` si no se encontró.
-   */
-  getUserByUsername(username: string): any | undefined {
-    return this.users.find(user => user.username === username);
-  }
-
-  setCurrentUser(user: any) {
-    this.currentUser = user;
-    this.updateLocalStorage();
+ authenticate(username: string, password: string): Observable<any> {
+    const loginData = { username, password };
+    return this.http.post(`${this.baseUrl}/signin`, loginData, { observe: 'response' });
   }
 
   getCurrentUser() {
     return this.currentUser;
   }
 
-  /**
-   * Actualiza la información de un usuario.
-   * @param updatedUser Usuario con la información actualizada.
-   */
-  updateUser(updatedUser: any) {
-    const index = this.users.findIndex(user => user.username === this.currentUser.username);
-    if (index !== -1) {
-      this.users[index] = {
-        ...this.users[index],
-        ...updatedUser
-      };
-      this.currentUser = this.users[index];
-      this.updateLocalStorage();
-    }
+  
+
+  setCurrentUser(user: any) {
+    this.currentUser = user;
   }
+
 
   logout() {
     this.currentUser = null;
-    this.updateLocalStorage();
   }
 }

@@ -61,7 +61,7 @@ export class CuentaComponent {
       password: this.miFormulario.value.password
     };
 
-    this.userService.updateUser(updatedUser);
+    //this.userService.updateUser(updatedUser);
     alert('Usuario actualizado');
   }
 

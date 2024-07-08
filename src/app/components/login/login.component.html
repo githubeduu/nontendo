@@ -53,22 +53,22 @@
       </div>
     </nav>
   </header>
-<main class="container mt-5">
-  <h2 class="text-center mb-4">Login</h2>
-  <form id="loginForm" (submit)="onSubmit()">
-      <div class="form-group">
-          <label for="username">Nombre de Usuario</label>
-          <input type="text" class="form-control" id="username" name="username" required #username>
-          <div class="invalid-feedback">Por favor, ingresa tu nombre de usuario.</div>
-      </div>
-      <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" class="form-control" id="password" name="password" required #password>
-          <div class="invalid-feedback">Por favor, ingresa tu contraseña.</div>
-      </div>
-      <button id="loginButton" class="btn btn-primary" type="submit">Ingresar</button>
-      <div class="mt-2">
-        <a routerLink="/recuperarContrasena">Recuperar Contraseña</a>
-      </div>
-  </form>  
-</main>
+  <main class="container mt-5">
+    <h2 class="text-center mb-4">Login</h2>
+    <form id="loginForm" (submit)="onSubmit($event)">
+        <div class="form-group">
+            <label for="username">Nombre de Usuario</label>
+            <input type="text" class="form-control" id="username" name="username" required #username>
+            <div class="invalid-feedback">Por favor, ingresa tu nombre de usuario.</div>
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" required #password>
+            <div class="invalid-feedback">Por favor, ingresa tu contraseña.</div>
+        </div>
+        <button id="loginButton" class="btn btn-primary" type="submit">Ingresar</button>
+        <div class="mt-2">
+          <a routerLink="/recuperarContrasena">Recuperar Contraseña</a>
+        </div>
+    </form>  
+  </main>

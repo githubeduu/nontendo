@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/usuario.service';
 
@@ -25,7 +25,6 @@ import { UserService } from '../../services/usuario.service';
 })
 export class CategoryRegistroComponent {
   miFormulario!: FormGroup;
-  showSubMenu: boolean = false;
   formSubmitted: boolean = false;
   currentUser: any;
 
@@ -43,22 +42,16 @@ export class CategoryRegistroComponent {
   
   ngOnInit(): void {
     this.miFormulario = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      name: ['', Validators.required],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          this.validatePassword
-        ]
-      ],
-      confirmPassword: ['', Validators.required],
       username: ['', Validators.required],
-      birthdate: ['', [Validators.required, this.minimumAgeValidator(16)]]
-    }, { validators: this.passwordMatchValidator });
+      password: ['', Validators.required],
+      name: ['', Validators.required],
+      rut: ['', Validators.required],
+      direccion: ['', Validators.required],
+      comuna: ['', Validators.required],
+      rolId: [3, Validators.required]
+    });
   }
-
+  
   /**
    * Valida que la contraseña cumpla con los requisitos mínimos.
    * @param control Control de formulario a validar.
@@ -74,48 +67,29 @@ export class CategoryRegistroComponent {
     return isValid ? null : { invalidPassword: true };
   }
   
-   /**
-   * Valida que la contraseña coincida con la confirmación de contraseña.
-   * @param form Formulario completo para validar.
-   * @returns Objeto con el error si las contraseñas no coinciden, o nulo si coinciden.
-   */
-  private passwordMatchValidator(form: FormGroup): ValidationErrors | null {
-    const password = form.get('password')?.value;
-    const confirmPassword = form.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { mismatch: true };
-  }
-
-   /**
-   * Valida que la fecha de nacimiento sea mayor a la edad mínima especificada.
-   * @param minAge Edad mínima permitida.
-   * @returns Función de validación para la fecha de nacimiento.
-   */
-  private minimumAgeValidator(minAge: number) {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const birthdate = new Date(control.value);
-      const today = new Date();
-      const age = today.getFullYear() - birthdate.getFullYear();
-      const m = today.getMonth() - birthdate.getMonth();
-      return (age > minAge || (age === minAge && m >= 0)) ? null : { minAge: true };
-    };
-  }
-
   submitForm() {
     this.formSubmitted = true;
-    if (this.miFormulario.valid){  
-
+    if (this.miFormulario.valid) {
       const newUser = {
-        name: this.miFormulario.get('name')!.value,
-        email: this.miFormulario.get('email')!.value,
         username: this.miFormulario.get('username')!.value,
-        password: this.miFormulario.get('password')!.value        
+        password: this.miFormulario.get('password')!.value,
+        nombre: this.miFormulario.get('name')!.value,
+        rut: this.miFormulario.get('rut')!.value,
+        direccion: this.miFormulario.get('direccion')!.value,
+        comuna: this.miFormulario.get('comuna')!.value,
+        rolId: this.miFormulario.get('rolId')!.value
       };
-      this.userService.addUser(newUser);
 
-
-      console.log("Resultado: " + this.miFormulario.get('name')!.value);
-      window.alert('Usuario registrado exitosamente');
-      this.router.navigate(['/index']);
+      this.userService.addUser(newUser).subscribe(
+        () => {
+          window.alert('Usuario registrado exitosamente');
+          this.router.navigate(['/index']);
+        },
+        error => {
+          console.error('Error al registrar usuario:', error);
+          // Maneja el error apropiadamente (mostrar mensaje al usuario, registrar en consola, etc.)
+        }
+      );
     }
   }
 }

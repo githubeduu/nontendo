@@ -23,7 +23,7 @@ export class IndexComponent implements AfterViewInit {
   }
 
   logout() {
-    this.userService.logout(); // Elimina el usuario autenticado
+    //this.userService.logout(); // Elimina el usuario autenticado
     this.currentUser = null;
   }
 
