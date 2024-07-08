@@ -1,32 +1,59 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 import { CarroService } from '../../services/carro.service';
 import { UserService } from '../../services/usuario.service';
+import { ProductosService } from '../../services/productos.service';
 
 @Component({
   selector: 'app-category-xbox-series',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule], // Agrega HttpClientModule a imports
   templateUrl: './category-xbox-series.component.html',
-  styleUrl: './category-xbox-series.component.scss'
+  styleUrls: ['./category-xbox-series.component.scss']
 })
 export class CategoryXboxSeriesComponent {
   carroService = inject(CarroService);
   currentUser: any;
-  constructor( private userService: UserService
+  
+  products: any[] = [];
+  filteredProducts: any[] = [];
+
+  constructor( private userService: UserService,
+    private productosService: ProductosService
   ) {
     this.currentUser = this.userService.getCurrentUser(); 
   }
 
   logout() {
-    this.userService.logout(); // Elimina el usuario autenticado
+    this.userService.logout();
     this.currentUser = null;
   }
 
-
-  agregarAlCarro(producto : any){
+  agregarAlCarro(producto: any) {
     this.carroService.agregarAlCarro(producto);
     alert('Producto Agregado correctamente');
   }
+
+  ngOnInit(): void {
+    this.productosService.getProductsByCategoriaId(1).subscribe(
+      (data: any[]) => {
+        console.log('Received data:', data); // Verifica los datos recibidos en la consola
+        if (Array.isArray(data)) {
+          this.products = data;
+          this.filteredProducts = this.products.filter(product => product.categoriaid === 1);
+          console.log('Filtered products:', this.filteredProducts); // Verifica productos filtrados
+        } else {
+          console.error('Response format is unexpected:', data);
+          this.products = []; // Manejo de respuesta inesperada
+        }
+      },
+      error => {
+        console.error('Error fetching products:', error); // Manejo de errores
+        // Puedes añadir lógica adicional para manejar errores
+      }
+    );
+  }
+
 }

@@ -66,99 +66,20 @@
     </div>
   </nav>
 </header>
-  <main>
-    <section id="games" class="container mt-4">
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/juegos/ps4/acrogue.jpg" class="card-img-top" alt="Juego 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Acrogue</h5>
-                        <p class="card-text">Acrogue es un videojuego de rol y aventuras con elementos de acción y mazmorras, donde exploras mazmorras generadas aleatoriamente en busca de tesoros y enfrentas desafíos únicos.</p>
-                        <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Acrogue', precio: 45990, id: 1 })">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/juegos/ps4/apex.jpg" class="card-img-top" alt="Juego 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Apex Legends</h5>
-                        <p class="card-text">Apex Legends es un juego de disparos en primera persona tipo battle royale, gratuito para PlayStation 4. Los jugadores forman equipos, eligen personajes con habilidades únicas y luchan hasta que solo quede un equipo en pie.</p>
-                        <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Apex Legends', precio: 29990, id: 2 })">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/juegos/ps4/batman.jpg" class="card-img-top" alt="Juego 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Batman: Arkham Knight</h5>
-                        <p class="card-text">Batman: Arkham Knight es un juego de acción y aventuras donde controlas a Batman en su lucha contra el crimen en Gotham City, enfrentando a villanos icónicos como el Espantapájaros y el Joker. Explora la ciudad, resuelve acertijos y disfruta de combates fluidos en este título aclamado por la crítica.</p>
-                        <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Batman: Arkham Knight', precio: 24990, id: 3 })">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/juegos/ps4/Borderlands.jpg" class="card-img-top" alt="Juego 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Borderlands</h5>
-                        <p class="card-text">es una serie de videojuegos de disparos en primera persona con elementos de rol y humor negro. Ambientado en un mundo postapocalíptico, el juego se destaca por su estilo gráfico único y su sistema de generación aleatoria de armas. Los jugadores exploran el mundo, completan misiones y luchan contra enemigos, todo mientras disfrutan de un estilo cómico y exagerado.</p>
-                        <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Borderlands', precio: 24990, id: 4 })">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>               
+<main>
+  <section id="games" class="container mt-4">
+    <div class="row">
+      <article class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let product of filteredProducts">
+        <div class="card">
+          <img [src]="product.imagenurl" class="card-img-top" alt="{{product.nombre}}">
+          <div class="card-body">
+            <h5 class="card-title">{{product.nombre}}</h5>
+            <p class="card-text">{{product.descripcion}}</p>
+            <p class="card-text price">Precio: {{product.precio}} <span>Descuento: {{product.descuento ? 'Sí' : 'No'}}</span></p>
+            <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: product.nombre, precio: product.precio, id: product.id })">Agregar al Carrito</button>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/juegos/ps4/forhonor.jpg" class="card-img-top" alt="Juego 1">
-                    <div class="card-body">
-                        <h5 class="card-title">For Honor</h5>
-                        <p class="card-text">es un juego de combate cuerpo a cuerpo en tercera persona desarrollado por Ubisoft. Los jugadores eligen entre varias facciones históricas de guerreros, como caballeros, samuráis y vikingos, y participan en batallas intensas y tácticas. El juego se centra en el combate uno contra uno y en equipo, con un sistema de combate avanzado que requiere habilidad y estrategia para dominar.</p>
-                        <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'For Honor', precio: 45990, id: 5 })">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/juegos/ps4/lost.jpg" class="card-img-top" alt="Juego 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Lost Judgment</h5>
-                        <p class="card-text">Es un videojuego de acción y aventuras desarrollado por Ryu Ga Gotoku Studio y publicado por Sega. Es la secuela de "Judgment" y sigue al detective privado Takayuki Yagami mientras resuelve casos en Kamurocho y Yokohama. El juego combina elementos de investigación, combate y exploración en un entorno de mundo abierto.</p>
-                        <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Lost Judgment', precio: 29990, id: 6 })">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/juegos/ps4/naturo.jpg" class="card-img-top" alt="Juego 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Naruto Shippuden: Ultimate Ninja Storm 4</h5>
-                        <p class="card-text">es un juego de lucha desarrollado por CyberConnect2 y publicado por Bandai Namco Entertainment. Basado en el manga y anime "Naruto", este juego permite a los jugadores luchar en batallas épicas utilizando personajes y habilidades del universo de Naruto. Con gráficos impresionantes y mecánicas de juego sólidas, es un título popular entre los fans de la serie.</p>
-                        <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Naruto Shippuden: Ultimate Ninja Storm 4', precio: 24990, id: 7 })">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card">
-                    <img src="assets/images/juegos/ps4/watchdogs.jpg" class="card-img-top" alt="Juego 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Watch Dogs</h5>
-                        <p class="card-text">es un juego de mundo abierto donde los jugadores asumen el papel de un hacker que utiliza habilidades informáticas para controlar la ciudad de Chicago y obtener venganza.</p>
-                        <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>
-                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: 'Watch Dogs', precio: 24990, id: 8 })">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>              
-        </div>
-    </section>
+      </article>
+    </div>
+  </section>
 </main>
