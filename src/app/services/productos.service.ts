@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductosService {
-  private apiUrl = 'http://ip172-18-0-120-cq5jlagl2o9000f9oaag-8080.direct.labs.play-with-docker.com/productos';
+  private apiUrl = 'http://localhost:8080/productos';
 
   constructor(private http: HttpClient) { }
 
@@ -26,5 +26,9 @@ export class ProductosService {
   actualizarProducto(id: number, producto: any): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<any>(url, producto);
+  }
+
+  eliminarProducto(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 }

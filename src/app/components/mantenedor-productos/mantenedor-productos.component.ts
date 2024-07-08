@@ -12,17 +12,18 @@ import { ProductosService } from '../../services/productos.service';
   standalone: true,
   imports: [CommonModule, RouterModule, HttpClientModule, FormsModule],
   templateUrl: './mantenedor-productos.component.html',
-  styleUrl: './mantenedor-productos.component.scss'
+  styleUrls: ['./mantenedor-productos.component.scss']
 })
 export class MantenedorProductosComponent implements OnInit {
   constructor( private userService: UserService,
     private productosService: ProductosService
-) {
-this.currentUser = this.userService.getCurrentUser(); 
-}
+  ) {
+    this.currentUser = this.userService.getCurrentUser(); 
+  }
   carroService = inject(CarroService);
   currentUser: any;
   showModal: boolean = false;
+  isEditMode: boolean = false;
   products: any[] = [];
   filteredProducts: any[] = [];
   nuevoProducto: any = {
@@ -33,16 +34,42 @@ this.currentUser = this.userService.getCurrentUser();
     descuento: false,
     categoriaid: 1
   };
+  productoSeleccionado: any = null;
+  showDeleteModal: boolean = false;
+  productToDelete: any = null;
 
-  
-  openModal() {
+  openModal(editMode: boolean = false) {
     this.showModal = true;
+    this.isEditMode = editMode;
   }
 
   closeModal() {
     this.showModal = false;
+    this.isEditMode = false;
+    this.productoSeleccionado = null;
+    this.resetForm();
   }
 
+  openDeleteModal(product: any) {
+    this.showDeleteModal = true;
+    this.productToDelete = product;
+  }
+
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+    this.productToDelete = null;
+  }
+
+  resetForm() {
+    this.nuevoProducto = {
+      nombre: '',
+      descripcion: '',
+      imagenurl: '',
+      precio: null,
+      descuento: false,
+      categoriaid: 1
+    };
+  }
 
   logout() {
     this.userService.logout();
@@ -67,43 +94,61 @@ this.currentUser = this.userService.getCurrentUser();
   }
 
   guardarProducto() {
-    console.log('Guardando producto:', this.nuevoProducto);
-    this.productosService.agregarProducto(this.nuevoProducto).subscribe(
-      (response) => {
-        console.log('Producto agregado correctamente:', response);
-        this.ngOnInit();        
-        this.closeModal();
-        alert('Producto agregado correctamente');
-      },
-      (error) => {
-        alert('Producto agregado correctamente');
-        console.error('Error al agregar producto:', error);
-      }
-    );
+    if (this.isEditMode && this.productoSeleccionado) {
+      // Lógica para actualizar el producto existente
+      this.productosService.actualizarProducto(this.productoSeleccionado.id, this.nuevoProducto).subscribe(
+        (response) => {
+          console.log('Producto actualizado correctamente:', response);
+          this.ngOnInit();
+          this.closeModal();
+          alert('Producto actualizado correctamente');
+        },
+        (error) => {
+          console.error('Error al actualizar producto:', error);
+          alert('Error al actualizar producto');
+        }
+      );
+    } else {
+      // Lógica para agregar un nuevo producto
+      console.log('Guardando producto:', this.nuevoProducto);
+      this.productosService.agregarProducto(this.nuevoProducto).subscribe(
+        (response) => {
+          console.log('Producto agregado correctamente:', response);
+          this.ngOnInit();
+          this.closeModal();
+          alert('Producto agregado correctamente');
+        },
+        (error) => {
+          console.error('Error al agregar producto:', error);
+          alert('Error al agregar producto');
+        }
+      );
+    }
   }
 
-  eliminarProducto(id: number): void {
-    // Aquí iría la lógica para eliminar el producto con el id proporcionado
-    console.log('Eliminar producto con id:', id);
-    // Ejemplo de cómo podrías implementar la eliminación
-    // this.productosService.deleteProduct(id).subscribe(
-    //   response => {
-    //     console.log('Producto eliminado:', response);
-    //     // Volver a cargar la lista de productos después de eliminar
-    //     this.loadProducts();
-    //   },
-    //   error => {
-    //     console.error('Error al eliminar producto:', error);
-    //   }
-    // );
+  eliminarProducto() {
+    if (this.productToDelete) {
+      this.productosService.eliminarProducto(this.productToDelete.id).subscribe(
+        (response) => {
+          console.log('Producto eliminado correctamente:', response);
+          this.ngOnInit();
+          this.closeDeleteModal();
+          alert('Producto eliminado correctamente');
+        },
+        (error) => {
+          console.error('Error al eliminar producto:', error);
+          alert('Error al eliminar producto');
+        }
+      );
+    }
   }
 
   editarProducto(id: number): void {
-    // Aquí iría la lógica para editar el producto con el id proporcionado
-    console.log('Editar producto con id:', id);
-    // Ejemplo de cómo podrías implementar la edición
-    // this.router.navigate(['/editar-producto', id]); // Redirigir a la página de edición del producto
+    const producto = this.products.find(p => p.id === id);
+    if (producto) {
+      this.productoSeleccionado = producto;
+      this.nuevoProducto = { ...producto };
+      this.openModal(true);
+    }
   }
-
-
 }
