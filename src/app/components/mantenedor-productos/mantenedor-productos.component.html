@@ -66,40 +66,101 @@
       </div>
     </nav>
   </header>
-  <main>
-    <div class="container mt-4">
-        <h2>Mantenedor de Productos</h2>
-        <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="product.nombre" required>
+    <div class="container">
+      <div class="col">
+        <h2>Lista de Productos</h2>
+        <button class="btn btn-success btn-agregar" (click)="openModal()">Agregar Nuevo Producto</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Imagen</th>
+              <th>Precio</th>
+              <th>Categoría</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td>{{ product.nombre }}</td>
+              <td>{{ product.descripcion }}</td>
+              <td><img [src]="product.imagenurl" alt="{{ product.nombre }}" style="max-width: 100px;"></td>
+              <td>{{ product.precio }}</td>
+              <td>{{ product.categoriaid }}</td>
+              <td class="btn-accion">
+                <button class="btn btn-primary btn-editar" (click)="editarProducto(product.id)">Editar</button>
+                <button class="btn btn-danger btn-eliminar" (click)="eliminarProducto(product.id)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showModal}">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Agregar Nuevo Producto</h5>
+            <button type="button" class="close" (click)="closeModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="product.descripcion" required>
-          </div>
-          <div class="mb-3">
-            <label for="precio" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="product.precio" required>
-          </div>
-          <div class="mb-3">
-            <label for="categoriaid" class="form-label">Categoría ID</label>
-            <input type="number" class="form-control" id="categoriaid" name="categoriaid" [(ngModel)]="product.categoriaid" required>
-          </div>
-          <div class="mb-3">
-            <label for="imagenurl" class="form-label">URL de Imagen</label>
-            <input type="text" class="form-control" id="imagenurl" name="imagenurl" [(ngModel)]="product.imagenurl" required>
-          </div>
-          <button type="submit" class="btn btn-primary">{{ product.id ? 'Actualizar' : 'Agregar' }}</button>
-        </form>
-      
-        <h3 class="mt-4">Lista de Productos</h3>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let p of products">
-            {{ p.nombre }} - {{ p.precio }} 
-            <button class="btn btn-secondary btn-sm" (click)="editProduct(p)">Editar</button>
-            <button class="btn btn-danger btn-sm" (click)="deleteProduct(p.id)">Eliminar</button>
-          </li>
-        </ul>
-      </div> 
-  </main>
+          <form (submit)="guardarProducto()">
+            <div class="modal-body">
+              <!-- Otros campos del formulario -->
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required [(ngModel)]="nuevoProducto.nombre" name="nombre">
+              </div>
+              <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <input type="text" class="form-control" id="descripcion" required [(ngModel)]="nuevoProducto.descripcion" name="descripcion">
+              </div>
+              <div class="form-group">
+                <label for="imagenUrl">URL de la Imagen</label>
+                <input type="text" class="form-control" id="imagenUrl" required [(ngModel)]="nuevoProducto.imagenurl" name="imagenurl">
+              </div>
+              <div class="form-group">
+                <label for="precio">Precio</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number" class="form-control" id="precio" required [(ngModel)]="nuevoProducto.precio" name="precio">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="descuento">¿Tiene descuento?</label>
+                <select class="form-control" id="descuento" [(ngModel)]="nuevoProducto.descuento" name="descuento">
+                  <option [ngValue]="true">Sí</option>
+                  <option [ngValue]="false">No</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="categoria">Categoría</label>
+                <select class="form-control" id="categoria" required [(ngModel)]="nuevoProducto.categoriaid" name="categoriaid">
+                  <option [ngValue]="1">Xbox</option>
+                  <option [ngValue]="2">Nintendo</option>
+                  <option [ngValue]="3">PlayStation 4</option>
+                  <option [ngValue]="4">PlayStation 5</option>
+                </select>
+              </div>            
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Agregar</button>
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+
