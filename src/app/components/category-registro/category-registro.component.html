@@ -66,49 +66,48 @@
     </div>
   </nav>
 </header>
-<!-- category-registro.component.html -->
 <main>
   <section id="register" class="container mt-3">
     <div class="row justify-content-center">
       <div class="col-md-6 px-5">
         <form [formGroup]="miFormulario" (ngSubmit)="submitForm()">
-          <div class="form-group form-floating mb-3">
-            <input type="text" class="form-control" id="username" formControlName="username">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="username" formControlName="username" placeholder="Nombre de usuario">
             <label for="username">Nombre de usuario</label>
             <div *ngIf="formSubmitted && miFormulario.get('username')?.errors?.['required']" class="text-danger">
               Por favor, introduce un nombre de usuario.
             </div>
           </div>
-          <div class="form-group mb-3">
-            <input type="password" class="form-control" id="password" formControlName="password">
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Contraseña">
             <label for="password">Contraseña</label>
             <div *ngIf="formSubmitted && miFormulario.get('password')?.errors?.['required']" class="text-danger">
               Por favor, introduce una contraseña.
             </div>
           </div>
-          <div class="form-group form-floating mb-3">
-            <input type="text" class="form-control" id="name" formControlName="name">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre completo">
             <label for="name">Nombre completo</label>
             <div *ngIf="formSubmitted && miFormulario.get('name')?.errors?.['required']" class="text-danger">
               Por favor, introduce tu nombre completo.
             </div>
           </div>
-          <div class="form-group form-floating mb-3">
-            <input type="text" class="form-control" id="rut" formControlName="rut">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="rut" formControlName="rut" placeholder="RUT">
             <label for="rut">RUT</label>
             <div *ngIf="formSubmitted && miFormulario.get('rut')?.errors?.['required']" class="text-danger">
               Por favor, introduce tu RUT.
             </div>
           </div>
-          <div class="form-group form-floating mb-3">
-            <input type="text" class="form-control" id="direccion" formControlName="direccion">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="direccion" formControlName="direccion" placeholder="Dirección">
             <label for="direccion">Dirección</label>
             <div *ngIf="formSubmitted && miFormulario.get('direccion')?.errors?.['required']" class="text-danger">
               Por favor, introduce tu dirección.
             </div>
           </div>
-          <div class="form-group form-floating mb-3">
-            <input type="text" class="form-control" id="comuna" formControlName="comuna">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="comuna" formControlName="comuna" placeholder="Comuna">
             <label for="comuna">Comuna</label>
             <div *ngIf="formSubmitted && miFormulario.get('comuna')?.errors?.['required']" class="text-danger">
               Por favor, introduce tu comuna.
@@ -120,4 +119,3 @@
     </div>
   </section>
 </main>
-  

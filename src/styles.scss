@@ -172,3 +172,16 @@ main {
     width: 100px;
   }
 }
+
+/* Estilos específicos para los form-floating */
+.form-floating>.form-control {
+  padding: 0.5rem 1rem;
+  height: auto;
+  line-height: 1.25;
+}
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label {
+  transform: scale(.85) translateY(-1.5rem);
+  opacity: .65;
+}
