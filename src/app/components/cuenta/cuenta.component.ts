@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/usuario.service';
+import { HttpClientModule } from '@angular/common/http';
 
 /**
  * @description
@@ -16,61 +17,56 @@ import { UserService } from '../../services/usuario.service';
  * El usuario debe estar autenticado para acceder a este componente.
  */
 
-interface User {
-  name: string;
-  email: string;
-  username: string;
-  password: string;
-}
-
 @Component({
   selector: 'app-cuenta',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './cuenta.component.html',
   styleUrl: './cuenta.component.scss'
 })
 
-export class CuentaComponent {
-  currentUser: User;
+export class CuentaComponent implements OnInit {
+  currentUser: any;
   miFormulario: FormGroup;
-  
-  constructor(private userService: UserService, 
-              private fb: FormBuilder,
-              private router: Router) {
-    this.currentUser = this.userService.getCurrentUser() || { name: '', email: '', username: '', password: '' };
 
+  constructor(
+    private userService: UserService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.miFormulario = this.fb.group({
-      name: [this.currentUser.name],
-      email: [this.currentUser.email],
-      username: [this.currentUser.username],
-      password: [''],
-      confirmPassword: ['']
-    }); 
+      nombre: [''],
+      rut: [''],
+      direccion: [''],
+      comuna: ['']
+    });
   }
 
-   /**
-   * Maneja el envío del formulario de actualización de la cuenta.
-   * Actualiza la información del usuario y muestra una alerta de éxito.
-   */
+  ngOnInit() {
+    this.currentUser = this.userService.getCurrentUser();
+
+    this.miFormulario.patchValue({
+      nombre: this.currentUser.nombre,
+      rut: this.currentUser.rut,
+      direccion: this.currentUser.direccion,
+      comuna: this.currentUser.comuna
+    });
+  }
+
   submitForm() {
     const updatedUser = {
-      name: this.miFormulario.value.name,
-      email: this.miFormulario.value.email,
-      username: this.miFormulario.value.username,
-      password: this.miFormulario.value.password
+      ...this.currentUser,
+      ...this.miFormulario.value
     };
 
-    //this.userService.updateUser(updatedUser);
-    alert('Usuario actualizado');
+    this.userService.updateUser(updatedUser).subscribe(() => {
+      this.userService.setCurrentUser(updatedUser);
+      alert('Usuario actualizado');
+    });
   }
 
-  /**
-   * Cierra la sesión del usuario y redirige a la página de inicio.
-   */
   logout() {
     this.userService.logout();
-    this.currentUser = { name: '', email: '', username: '', password: '' };
     this.router.navigate(['/index']);
   }
 }

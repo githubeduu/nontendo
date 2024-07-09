@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';  // Importa HttpErrorR
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']  // Corrige el nombre a styleUrls
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   @ViewChild('username') usernameInput!: ElementRef;
@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(private router: Router, private userService: UserService) {}
 
   onSubmit(event: Event) {
-    event.preventDefault(); // Previene la recarga de la página
+    event.preventDefault();
 
     const username = this.usernameInput.nativeElement.value;
     const password = this.passwordInput.nativeElement.value;
@@ -27,8 +27,9 @@ export class LoginComponent {
       (response: any) => {
         if (response.status === 200) {
           alert('Contraseña válida');
-          this.userService.setCurrentUser(response.user);
-          this.router.navigate(['/index']); // Redirecciona a la página de inicio
+          const user = response.body;
+          this.userService.setCurrentUser(user);
+          this.router.navigate(['/index']);
         } else {
           alert('Contraseña incorrecta');
         }

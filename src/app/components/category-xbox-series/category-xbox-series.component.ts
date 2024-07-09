@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 import { CarroService } from '../../services/carro.service';
@@ -13,30 +13,20 @@ import { ProductosService } from '../../services/productos.service';
   templateUrl: './category-xbox-series.component.html',
   styleUrls: ['./category-xbox-series.component.scss']
 })
-export class CategoryXboxSeriesComponent {
-  carroService = inject(CarroService);
+export class CategoryXboxSeriesComponent implements OnInit {
   currentUser: any;
-  
   products: any[] = [];
   filteredProducts: any[] = [];
 
-  constructor( private userService: UserService,
-    private productosService: ProductosService
-  ) {
-    this.currentUser = this.userService.getCurrentUser(); 
-  }
-
-  logout() {
-    this.userService.logout();
-    this.currentUser = null;
-  }
-
-  agregarAlCarro(producto: any) {
-    this.carroService.agregarAlCarro(producto);
-    alert('Producto Agregado correctamente');
-  }
+  constructor(
+    private userService: UserService,
+    private productosService: ProductosService,
+    private carroService: CarroService
+  ) {}
 
   ngOnInit(): void {
+    this.currentUser = this.userService.getCurrentUser();
+    
     this.productosService.getProductsByCategoriaId(1).subscribe(
       (data: any[]) => {
         console.log('Received data:', data); // Verifica los datos recibidos en la consola
@@ -56,4 +46,13 @@ export class CategoryXboxSeriesComponent {
     );
   }
 
+  logout() {
+    this.userService.logout();
+    this.currentUser = null;
+  }
+
+  agregarAlCarro(producto: any) {
+    this.carroService.agregarAlCarro(producto);
+    alert('Producto Agregado correctamente');
+  }
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CarroService } from '../../services/carro.service';
 import { UserService } from '../../services/usuario.service';
@@ -13,7 +13,7 @@ import { ProductosService } from '../../services/productos.service';
   templateUrl: './category-nintendo-switch.component.html',
   styleUrl: './category-nintendo-switch.component.scss'
 })
-export class CategoryNintendoSwitchComponent {
+export class CategoryNintendoSwitchComponent implements OnInit {
   carroService = inject(CarroService);
   currentUser: any;
   products: any[] = [];
@@ -21,12 +21,10 @@ export class CategoryNintendoSwitchComponent {
 
   constructor( private userService: UserService,
     private productosService: ProductosService
-  ) {
-    this.currentUser = this.userService.getCurrentUser(); 
-  }
+  ) {}
 
   logout() {
-    this.userService.logout(); // Elimina el usuario autenticado
+    this.userService.logout();
     this.currentUser = null;
   }
 
@@ -36,6 +34,7 @@ export class CategoryNintendoSwitchComponent {
   }
 
   ngOnInit(): void {
+    this.currentUser = this.userService.getCurrentUser();
     this.productosService.getProductsByCategoriaId(2).subscribe(
       (data: any[]) => {
         console.log('Received data:', data); // Verifica los datos recibidos en la consola

@@ -17,9 +17,7 @@ import { ProductosService } from '../../services/productos.service';
 export class MantenedorProductosComponent implements OnInit {
   constructor( private userService: UserService,
     private productosService: ProductosService
-  ) {
-    this.currentUser = this.userService.getCurrentUser(); 
-  }
+  ) {}
   carroService = inject(CarroService);
   currentUser: any;
   showModal: boolean = false;
@@ -77,6 +75,7 @@ export class MantenedorProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentUser = this.userService.getCurrentUser(); 
     this.productosService.getAllProducts().subscribe(
       (data: any[]) => {
         console.log('Received data:', data);

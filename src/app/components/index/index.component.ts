@@ -3,33 +3,36 @@ import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, Renderer2 } 
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { UserService } from '../../services/usuario.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule],
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements AfterViewInit {
   currentUser: any;
+
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
     @Inject(PLATFORM_ID) private platformId: Object,
     private userService: UserService
-  ) {
-    this.currentUser = this.userService.getCurrentUser(); 
+  ) {}
+
+  ngOnInit() {
+    this.currentUser = this.userService.getCurrentUser();
   }
 
   logout() {
-    //this.userService.logout(); // Elimina el usuario autenticado
+    this.userService.logout();
     this.currentUser = null;
   }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      // Script del carrusel de imágenes
       let currentSlide: number = 0;
       const slides = this.el.nativeElement.querySelectorAll('.carousel-item');
       const totalSlides: number = slides.length;
