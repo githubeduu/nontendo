@@ -5,41 +5,43 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common'; // Asegúrate de importar CommonModule si no está ya importado en tu módulo
+import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/usuario.service';
 
 describe('CategoryRegistroComponent', () => {
   let component: CategoryRegistroComponent;
   let fixture: ComponentFixture<CategoryRegistroComponent>;
   let router: Router;
+  let userServiceSpy: jasmine.SpyObj<UserService>;
 
   beforeEach(async () => {
+    const spy = jasmine.createSpyObj('UserService', ['getCurrentUser', 'logout', 'addUser']);
+
     await TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes([]),
         HttpClientModule,
-        CommonModule, // Asegúrate de importar CommonModule si no está ya importado en tu módulo
+        CommonModule,
+        CategoryRegistroComponent // Importa el componente autónomo aquí
       ],
       providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: { params: of({ id: 123 }) }
-        }
+        { provide: ActivatedRoute, useValue: { params: of({ id: 123 }) } },
+        { provide: UserService, useValue: spy }
       ]
     }).compileComponents();
+
+    userServiceSpy = TestBed.inject(UserService) as jasmine.SpyObj<UserService>;
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CategoryRegistroComponent);
     component = fixture.componentInstance;
-    router = TestBed.inject(Router); // Obtener una instancia del Router
+    router = TestBed.inject(Router);
     fixture.detectChanges();
   });
 
-  // Resto de las pruebas se mantienen igual
-
-  // 1. Verificar que el formulario se crea con los controles correctos
-  it('should create the form with correct controls', () => {
+  it('debería crear el formulario con los controles correctos', () => {
     expect(component.miFormulario.contains('username')).toBe(true);
     expect(component.miFormulario.contains('password')).toBe(true);
     expect(component.miFormulario.contains('name')).toBe(true);
@@ -49,8 +51,7 @@ describe('CategoryRegistroComponent', () => {
     expect(component.miFormulario.contains('rolId')).toBe(true);
   });
 
-  // 2. Validar el formulario y manejar errores de validación al enviar
-  it('should validate form and handle validation errors on submit', () => {
+  it('debería validar el formulario y manejar errores de validación al enviarlo', () => {
     component.miFormulario.setValue({
       username: '',
       password: '123', // Contraseña demasiado corta
@@ -58,7 +59,7 @@ describe('CategoryRegistroComponent', () => {
       rut: '',
       direccion: '',
       comuna: '',
-      rolId: 3 // Se espera un ID válido, por ejemplo, 1, 2, 3, etc.
+      rolId: 3
     });
 
     component.submitForm();
@@ -70,12 +71,12 @@ describe('CategoryRegistroComponent', () => {
     expect(component.miFormulario.get('rut')?.hasError('required')).toBe(true);
     expect(component.miFormulario.get('direccion')?.hasError('required')).toBe(true);
     expect(component.miFormulario.get('comuna')?.hasError('required')).toBe(true);
-    expect(component.miFormulario.get('rolId')?.hasError('required')).toBe(false); // Validar que el ID de rol no sea requerido si ya hay un valor
+    expect(component.miFormulario.get('rolId')?.hasError('required')).toBe(false);
   });
 
-  // 3. Navegar a la página de índice al enviar el formulario válido
-  it('should navigate to index page on successful form submission', () => {
-    const navigateSpy = spyOn(router, 'navigate'); // Usar el Router obtenido en lugar de component.router
+  it('debería navegar a la página de índice después de enviar el formulario exitosamente', () => {
+    const navigateSpy = spyOn(router, 'navigate');
+    userServiceSpy.addUser.and.returnValue(of({}));
 
     component.miFormulario.setValue({
       username: 'testuser',
