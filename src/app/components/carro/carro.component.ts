@@ -27,12 +27,14 @@ export class CarroComponent {
   carroService = inject(CarroService);
   currentUser: any;
   constructor( private userService: UserService
-  ) {
-    this.currentUser = this.userService.getCurrentUser(); 
+  ) {}
+
+  ngOnInit() {
+    this.currentUser = this.userService.getCurrentUser();
   }
 
   logout() {
-    this.userService.logout(); // Elimina el usuario autenticado
+    this.userService.logout();
     this.currentUser = null;
   }
 

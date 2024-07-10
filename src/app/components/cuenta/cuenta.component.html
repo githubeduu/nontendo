@@ -1,68 +1,78 @@
 <header>
-    <nav class="navbar navbar-expand-sm navbar-light">
-      <div class="container-fluid">
-        <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
-            </li>       
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Playstation
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>          
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Nintendo
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintedo Switch</a></li>                 
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Xbox
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">           
-                  <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>             
-                </ul>
-              </li>     
-          </ul>
-          <ul class="navbar-nav ml-auto" *ngIf="currentUser">
-            <li class="nav-item">
-              <span class="nav-link">Hola, {{ currentUser.username }}</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <img src="assets/images/logo/logo.png" alt="Logo Nontendo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Playstation
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation4']">Playstation 4</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/categoryPlaystation5']">Playstation 5</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Nintendo
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" [routerLink]="['/categoryNintendoSwitch']">Nintendo Switch</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Xbox
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" [routerLink]="['/categoryXboxSeries']">Xbox Series</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="currentUser; else guest">
+          <li class="nav-item">
+            <span class="nav-link">Hola, {{ currentUser?.nombre }}</span> <!-- Mostrar nombre completo -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" [routerLink]="['/cuenta']">Mi Cuenta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>
+          </li>
+          <!-- Mostrar Mantenedor Productos si el rolId es 1 -->
+          <li class="nav-item" *ngIf="currentUser && currentUser.rolId === 1">
+            <a class="nav-link" [routerLink]="['/mantenedorProductos']">Mantenedor Productos</a>
+          </li>
+        </ul>
+        <ng-template #guest>
+          <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/login']">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/categoryRegistro']">Registro Usuario</a>
-            </li>                                     
+            </li>
           </ul>
-          <ul class="navbar-nav ml-auto">
-            <li>
-              <a [routerLink]="['/carro']" class="btn btn-outline-danger">
-                <i class="bi bi-cart-fill"></i>
-              </a>
-            </li> 
-          </ul>
-        </div>
+        </ng-template>
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <a [routerLink]="['/carro']" class="btn btn-outline-danger">
+              <i class="bi bi-cart-fill"></i>
+            </a>
+          </li>
+        </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
+  <!-- cuenta.component.html -->
   <main>
     <h2 class="text-center mb-4">Mi Cuenta</h2>
     <section id="cuenta" class="container mt-3">
@@ -70,16 +80,16 @@
         <div class="col-md-6 px-5">
           <form [formGroup]="miFormulario" (ngSubmit)="submitForm()">
             <div class="form-group form-floating mb-3">
-              <input type="text" class="form-control" id="name" formControlName="name">
+              <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
             </div>
             <div class="form-group form-floating mb-3">
-              <input type="email" class="form-control" id="email" formControlName="email">
+              <input type="text" class="form-control" id="rut" formControlName="rut" placeholder="RUT">
             </div>
             <div class="form-group form-floating mb-3">
-              <input type="text" class="form-control" id="username" formControlName="username">
+              <input type="text" class="form-control" id="direccion" formControlName="direccion" placeholder="Dirección">
             </div>
-            <div class="form-group mb-3 position-relative">
-              <input type="password" class="form-control" id="password" formControlName="password">
+            <div class="form-group form-floating mb-3">
+              <input type="text" class="form-control" id="comuna" formControlName="comuna" placeholder="Comuna">
             </div>
             <button type="submit" class="btn btn-submit btn-primary w-100">Guardar cambios</button>
           </form>
@@ -87,4 +97,6 @@
       </div>
     </section>
   </main>
+  
+
   

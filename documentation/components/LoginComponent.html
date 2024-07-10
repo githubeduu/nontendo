@@ -106,6 +106,10 @@
                 role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
         <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
             <a href="#tree" class="nav-link"
                 role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
@@ -120,14 +124,6 @@
 </p>
 
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>Este componente captura las credenciales del usuario a través de un formulario y las valida con el servicio de usuario.
-Si las credenciales son correctas, el usuario se autentica y se redirige a la página de inicio.</p>
-
-    </p>
 
 
 
@@ -166,6 +162,10 @@ Si las credenciales son correctas, el usuario se autentica y se redirige a la p�
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./login.component.scss</code></td>
+            </tr>
 
 
 
@@ -176,10 +176,6 @@ Si las credenciales son correctas, el usuario se autentica y se redirige a la p�
 
 
 
-            <tr>
-                <td class="col-md-3">styleUrl</td>
-                <td class="col-md-9"><code>./login.component.scss</code></td>
-            </tr>
 
 
 
@@ -247,7 +243,7 @@ Si las credenciales son correctas, el usuario se autentica y se redirige a la p�
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/login/login.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/login/login.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -319,15 +315,15 @@ Si las credenciales son correctas, el usuario se autentica y se redirige a la p�
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>onSubmit()</code>
+<code>onSubmit(event: Event)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/components/login/login.component.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="20"
+                                    class="link-to-prism">src/app/components/login/login.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -335,10 +331,40 @@ Si las credenciales son correctas, el usuario se autentica y se redirige a la p�
             <tr>
                 <td class="col-md-4">
 
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -378,7 +404,7 @@ Si las credenciales son correctas, el usuario se autentica y se redirige a la p�
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/login/login.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/login/login.component.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -414,7 +440,7 @@ Si las credenciales son correctas, el usuario se autentica y se redirige a la p�
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/login/login.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/login/login.component.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -431,48 +457,45 @@ Si las credenciales son correctas, el usuario se autentica y se redirige a la p�
 import { Component, ElementRef, ViewChild } from &#x27;@angular/core&#x27;;
 import { Router, RouterModule } from &#x27;@angular/router&#x27;;
 import { UserService } from &#x27;../../services/usuario.service&#x27;;
-
-/**
- * @description
- * Componente para el inicio de sesión de usuarios.
- * Permite a los usuarios autenticarse ingresando su nombre de usuario y contraseña.
- */
-
-/**
- * @usageNotes
- * Este componente captura las credenciales del usuario a través de un formulario y las valida con el servicio de usuario.
- * Si las credenciales son correctas, el usuario se autentica y se redirige a la página de inicio.
- */
+import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;  // Importa HttpErrorResponse
 
 @Component({
   selector: &#x27;app-login&#x27;,
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: &#x27;./login.component.html&#x27;,
-  styleUrl: &#x27;./login.component.scss&#x27;
+  styleUrls: [&#x27;./login.component.scss&#x27;]
 })
 export class LoginComponent {
-  constructor(private router: Router, private userService: UserService) {}
-
   @ViewChild(&#x27;username&#x27;) usernameInput!: ElementRef;
   @ViewChild(&#x27;password&#x27;) passwordInput!: ElementRef;
 
-  onSubmit() {
+  constructor(private router: Router, private userService: UserService) {}
+
+  onSubmit(event: Event) {
+    event.preventDefault();
+
     const username &#x3D; this.usernameInput.nativeElement.value;
     const password &#x3D; this.passwordInput.nativeElement.value;
-    const user &#x3D; this.userService.getUserByUsername(username);
 
-    if (!user || user.password !&#x3D;&#x3D; password) {
-      alert(&#x27;Usuario o contraseña incorrectos&#x27;);
-      return;
-    }
-
-    alert(&#x27;Usuario valido&#x27;);
-    this.userService.setCurrentUser(user);
-    this.router.navigate([&#x27;/index&#x27;]);
+    this.userService.authenticate(username, password).subscribe(
+      (response: any) &#x3D;&gt; {
+        if (response.status &#x3D;&#x3D;&#x3D; 200) {
+          alert(&#x27;Contraseña válida&#x27;);
+          const user &#x3D; response.body;
+          this.userService.setCurrentUser(user);
+          this.router.navigate([&#x27;/index&#x27;]);
+        } else {
+          alert(&#x27;Contraseña incorrecta&#x27;);
+        }
+      },
+      (error: HttpErrorResponse) &#x3D;&gt; {
+        alert(&#x27;Error de autenticación&#x27;);
+        console.error(&#x27;Error al autenticar:&#x27;, error);
+      }
+    );
   }
-}
-</code></pre>
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
@@ -531,27 +554,33 @@ export class LoginComponent {
       &lt;/div&gt;
     &lt;/nav&gt;
   &lt;/header&gt;
-&lt;main class&#x3D;&quot;container mt-5&quot;&gt;
-  &lt;h2 class&#x3D;&quot;text-center mb-4&quot;&gt;Login&lt;/h2&gt;
-  &lt;form id&#x3D;&quot;loginForm&quot; (submit)&#x3D;&quot;onSubmit()&quot;&gt;
-      &lt;div class&#x3D;&quot;form-group&quot;&gt;
-          &lt;label for&#x3D;&quot;username&quot;&gt;Nombre de Usuario&lt;/label&gt;
-          &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;username&quot; name&#x3D;&quot;username&quot; required #username&gt;
-          &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;Por favor, ingresa tu nombre de usuario.&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class&#x3D;&quot;form-group&quot;&gt;
-          &lt;label for&#x3D;&quot;password&quot;&gt;Contraseña&lt;/label&gt;
-          &lt;input type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot; required #password&gt;
-          &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;Por favor, ingresa tu contraseña.&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;button id&#x3D;&quot;loginButton&quot; class&#x3D;&quot;btn btn-primary&quot; type&#x3D;&quot;submit&quot;&gt;Ingresar&lt;/button&gt;
-      &lt;div class&#x3D;&quot;mt-2&quot;&gt;
-        &lt;a routerLink&#x3D;&quot;/recuperarContrasena&quot;&gt;Recuperar Contraseña&lt;/a&gt;
-      &lt;/div&gt;
-  &lt;/form&gt;  
-&lt;/main&gt;</code></pre>
+  &lt;main class&#x3D;&quot;container mt-5&quot;&gt;
+    &lt;h2 class&#x3D;&quot;text-center mb-4&quot;&gt;Login&lt;/h2&gt;
+    &lt;form id&#x3D;&quot;loginForm&quot; (submit)&#x3D;&quot;onSubmit($event)&quot;&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;label for&#x3D;&quot;username&quot;&gt;Nombre de Usuario&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;username&quot; name&#x3D;&quot;username&quot; required #username&gt;
+            &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;Por favor, ingresa tu nombre de usuario.&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;label for&#x3D;&quot;password&quot;&gt;Contraseña&lt;/label&gt;
+            &lt;input type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot; required #password&gt;
+            &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;Por favor, ingresa tu contraseña.&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button id&#x3D;&quot;loginButton&quot; class&#x3D;&quot;btn btn-primary&quot; type&#x3D;&quot;submit&quot;&gt;Ingresar&lt;/button&gt;
+        &lt;div class&#x3D;&quot;mt-2&quot;&gt;
+          &lt;a routerLink&#x3D;&quot;/recuperarContrasena&quot;&gt;Recuperar Contraseña&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;  
+  &lt;/main&gt;</code></pre>
     </div>
 
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./login.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
 
     <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
@@ -578,8 +607,8 @@ export class LoginComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><header>    <nav class="navbar navbar-expand-sm navbar-light">      <div class="container-fluid">        <img src="assets/images/logo/logo.png" alt="Logo Nontendo">        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">          <span class="navbar-toggler-icon"></span>        </button>        <div class="collapse navbar-collapse" id="navbarSupportedContent">          <ul class="navbar-nav me-auto mb-2 mb-lg-0">            <li class="nav-item">              <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>            </li>                   <li class="nav-item dropdown">              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">                Playstation              </a>              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                           <li><a class="dropdown-item" [routerLink]="[\'/categoryPlaystation4\']">Playstation 4</a></li>                <li><a class="dropdown-item" [routerLink]="[\'/categoryPlaystation5\']">Playstation 5</a></li>                        </ul>            </li>            <li class="nav-item dropdown">                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">                  Nintendo                </a>                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                             <li><a class="dropdown-item" [routerLink]="[\'/categoryNintendoSwitch\']">Nintedo Switch</a></li>                                 </ul>              </li>              <li class="nav-item dropdown">                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">                  Xbox                </a>                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                             <li><a class="dropdown-item" [routerLink]="[\'/categoryXboxSeries\']">Xbox Series</a></li>                             </ul>              </li>               </ul>          <ul class="navbar-nav ml-auto">            <li id="loginNavItem" class="nav-item">                <a class="nav-link" [routerLink]="[\'/login\']">Login</a>            </li>            <li class="nav-item">                <a class="nav-link" [routerLink]="[\'/categoryRegistro\']">Registro Usuario</a>            </li>            <li>              <a [routerLink]="[\'/carro\']" class="btn btn-outline-danger">                <i class="bi bi-cart-fill"></i>              </a>            </li>                         </ul>        </div>      </div>    </nav>  </header><main class="container mt-5">  <h2 class="text-center mb-4">Login</h2>  <form id="loginForm" (submit)="onSubmit()">      <div class="form-group">          <label for="username">Nombre de Usuario</label>          <input type="text" class="form-control" id="username" name="username" required #username>          <div class="invalid-feedback">Por favor, ingresa tu nombre de usuario.</div>      </div>      <div class="form-group">          <label for="password">Contraseña</label>          <input type="password" class="form-control" id="password" name="password" required #password>          <div class="invalid-feedback">Por favor, ingresa tu contraseña.</div>      </div>      <button id="loginButton" class="btn btn-primary" type="submit">Ingresar</button>      <div class="mt-2">        <a routerLink="/recuperarContrasena">Recuperar Contraseña</a>      </div>  </form>  </main></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarroComponent', 'selector': 'app-carro'},{'name': 'CategoryNintendoSwitchComponent', 'selector': 'app-category-nintendo-switch'},{'name': 'CategoryPlaystation4Component', 'selector': 'app-category-playstation-4'},{'name': 'CategoryPlaystation5Component', 'selector': 'app-category-playstation-5'},{'name': 'CategoryRegistroComponent', 'selector': 'app-category-registro'},{'name': 'CategoryXboxSeriesComponent', 'selector': 'app-category-xbox-series'},{'name': 'CuentaComponent', 'selector': 'app-cuenta'},{'name': 'IndexComponent', 'selector': 'app-index'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'RecuperarContrasenaComponent', 'selector': 'app-recuperar-contrasena'}];
+        var COMPONENT_TEMPLATE = '<div><header>    <nav class="navbar navbar-expand-sm navbar-light">      <div class="container-fluid">        <img src="assets/images/logo/logo.png" alt="Logo Nontendo">        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">          <span class="navbar-toggler-icon"></span>        </button>        <div class="collapse navbar-collapse" id="navbarSupportedContent">          <ul class="navbar-nav me-auto mb-2 mb-lg-0">            <li class="nav-item">              <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>            </li>                   <li class="nav-item dropdown">              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">                Playstation              </a>              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                           <li><a class="dropdown-item" [routerLink]="[\'/categoryPlaystation4\']">Playstation 4</a></li>                <li><a class="dropdown-item" [routerLink]="[\'/categoryPlaystation5\']">Playstation 5</a></li>                        </ul>            </li>            <li class="nav-item dropdown">                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">                  Nintendo                </a>                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                             <li><a class="dropdown-item" [routerLink]="[\'/categoryNintendoSwitch\']">Nintedo Switch</a></li>                                 </ul>              </li>              <li class="nav-item dropdown">                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">                  Xbox                </a>                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                             <li><a class="dropdown-item" [routerLink]="[\'/categoryXboxSeries\']">Xbox Series</a></li>                             </ul>              </li>               </ul>          <ul class="navbar-nav ml-auto">            <li id="loginNavItem" class="nav-item">                <a class="nav-link" [routerLink]="[\'/login\']">Login</a>            </li>            <li class="nav-item">                <a class="nav-link" [routerLink]="[\'/categoryRegistro\']">Registro Usuario</a>            </li>            <li>              <a [routerLink]="[\'/carro\']" class="btn btn-outline-danger">                <i class="bi bi-cart-fill"></i>              </a>            </li>                         </ul>        </div>      </div>    </nav>  </header>  <main class="container mt-5">    <h2 class="text-center mb-4">Login</h2>    <form id="loginForm" (submit)="onSubmit($event)">        <div class="form-group">            <label for="username">Nombre de Usuario</label>            <input type="text" class="form-control" id="username" name="username" required #username>            <div class="invalid-feedback">Por favor, ingresa tu nombre de usuario.</div>        </div>        <div class="form-group">            <label for="password">Contraseña</label>            <input type="password" class="form-control" id="password" name="password" required #password>            <div class="invalid-feedback">Por favor, ingresa tu contraseña.</div>        </div>        <button id="loginButton" class="btn btn-primary" type="submit">Ingresar</button>        <div class="mt-2">          <a routerLink="/recuperarContrasena">Recuperar Contraseña</a>        </div>    </form>    </main></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarroComponent', 'selector': 'app-carro'},{'name': 'CategoryNintendoSwitchComponent', 'selector': 'app-category-nintendo-switch'},{'name': 'CategoryPlaystation4Component', 'selector': 'app-category-playstation-4'},{'name': 'CategoryPlaystation5Component', 'selector': 'app-category-playstation-5'},{'name': 'CategoryRegistroComponent', 'selector': 'app-category-registro'},{'name': 'CategoryXboxSeriesComponent', 'selector': 'app-category-xbox-series'},{'name': 'CuentaComponent', 'selector': 'app-cuenta'},{'name': 'IndexComponent', 'selector': 'app-index'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MantenedorProductosComponent', 'selector': 'app-mantenedor-productos'},{'name': 'RecuperarContrasenaComponent', 'selector': 'app-recuperar-contrasena'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
 </script>

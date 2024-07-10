@@ -4,6 +4,7 @@ import { RecuperarContrasenaComponent } from './recuperar-contrasena.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('RecuperarContrasenaComponent', () => {
   let component: RecuperarContrasenaComponent;
@@ -11,7 +12,7 @@ describe('RecuperarContrasenaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientModule],
       declarations: [],
       providers: [
         { 

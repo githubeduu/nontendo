@@ -3,6 +3,7 @@ import { CategoryXboxSeriesComponent } from './category-xbox-series.component';
 import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CategoryXboxSeriesComponent', () => {
   let component: CategoryXboxSeriesComponent;
@@ -10,7 +11,7 @@ describe('CategoryXboxSeriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientModule],
       declarations: [],
       providers: [
         { 

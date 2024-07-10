@@ -1,5 +1,7 @@
 // user.service.ts
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 /**
  * @description
@@ -19,91 +21,48 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private users: any[] = [];
+  private baseUrl = 'http://localhost:8080/usuario';
   private currentUser: any = null;
 
-  constructor() {
-    if (this.isLocalStorageAvailable()) {
-      this.users = JSON.parse(localStorage.getItem('users') || '[]');
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
-    }
+  constructor(private http: HttpClient) {}
+
+  addUser(user: any): Observable<any> {
+    return this.http.post(this.baseUrl, user);
   }
 
-   /**
-   * Verifica si el almacenamiento local está disponible.
-   * @returns `true` si el almacenamiento local está disponible, `false` en caso contrario.
-   */
-  private isLocalStorageAvailable(): boolean {
-    try {
-      const test = 'test';
-      localStorage.setItem(test, test);
-      localStorage.removeItem(test);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-   /**
-   * Agrega un nuevo usuario.
-   * @param user Usuario a agregar.
-   */
-  addUser(user: any) {
-    this.users.push(user);
-    this.updateLocalStorage();
-  }
-
-  /**
-   * Obtiene la lista de usuarios.
-   * @returns Lista de usuarios.
-   */
-  getUsers() {
-    return this.users;
-  }
-
-  private updateLocalStorage() {
-    if (this.isLocalStorageAvailable()) {
-      localStorage.setItem('users', JSON.stringify(this.users));
-      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    }
-  }
-
-    /**
-   * Obtiene un usuario por nombre de usuario.
-   * @param username Nombre de usuario del usuario a buscar.
-   * @returns El usuario encontrado o `undefined` si no se encontró.
-   */
-  getUserByUsername(username: string): any | undefined {
-    return this.users.find(user => user.username === username);
+  authenticate(username: string, password: string): Observable<any> {
+    const loginData = { username, password };
+    return this.http.post(`${this.baseUrl}/signin`, loginData, { observe: 'response' });
   }
 
   setCurrentUser(user: any) {
     this.currentUser = user;
-    this.updateLocalStorage();
+    localStorage.setItem('currentUser', JSON.stringify(user)); // Almacena el usuario en localStorage
   }
 
   getCurrentUser() {
+    if (!this.currentUser) {
+      const storedUser = localStorage.getItem('currentUser');
+      if (storedUser) {
+        try {
+          this.currentUser = JSON.parse(storedUser); // Recupera el usuario de localStorage si no está en memoria
+        } catch (error) {
+          console.error('Error parsing JSON from localStorage:', error);
+          this.currentUser = null;
+        }
+      } else {
+        this.currentUser = null;
+      }
+    }
     return this.currentUser;
   }
 
-  /**
-   * Actualiza la información de un usuario.
-   * @param updatedUser Usuario con la información actualizada.
-   */
-  updateUser(updatedUser: any) {
-    const index = this.users.findIndex(user => user.username === this.currentUser.username);
-    if (index !== -1) {
-      this.users[index] = {
-        ...this.users[index],
-        ...updatedUser
-      };
-      this.currentUser = this.users[index];
-      this.updateLocalStorage();
-    }
+  updateUser(user: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${user.id}`, user);
   }
 
   logout() {
     this.currentUser = null;
-    this.updateLocalStorage();
+    localStorage.removeItem('currentUser'); // Elimina el usuario de localStorage al cerrar sesión
   }
 }

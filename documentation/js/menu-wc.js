@@ -84,6 +84,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/LoginComponent.html" data-type="entity-link" >LoginComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/MantenedorProductosComponent.html" data-type="entity-link" >MantenedorProductosComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/RecuperarContrasenaComponent.html" data-type="entity-link" >RecuperarContrasenaComponent</a>
                             </li>
                         </ul>
@@ -100,23 +103,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/CarroService.html" data-type="entity-link" >CarroService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/ProductosService.html" data-type="entity-link" >ProductosService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/UserService.html" data-type="entity-link" >UserService</a>
                                 </li>
                             </ul>
                         </li>
-                    <li class="chapter">
-                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#interfaces-links"' :
-                            'data-bs-target="#xs-interfaces-links"' }>
-                            <span class="icon ion-md-information-circle-outline"></span>
-                            <span>Interfaces</span>
-                            <span class="icon ion-ios-arrow-down"></span>
-                        </div>
-                        <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
-                            <li class="link">
-                                <a href="interfaces/User.html" data-type="entity-link" >User</a>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#miscellaneous-links"'
                             : 'data-bs-target="#xs-miscellaneous-links"' }>

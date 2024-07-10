@@ -91,7 +91,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >UserService</li>
+  <li class="breadcrumb-item" >ProductosService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -115,18 +115,10 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/services/usuario.service.ts</code>
+            <code>src/app/services/productos.service.ts</code>
         </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Este servicio utiliza el almacenamiento local para almacenar la lista de usuarios y el usuario actualmente autenticado.
-Los métodos proporcionados permiten realizar operaciones básicas de gestión de usuarios, como agregar, obtener, actualizar y eliminar usuarios.</p>
-
-            </p>
 
 
 
@@ -144,11 +136,7 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#baseUrl" >baseUrl</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#currentUser" >currentUser</a>
+                                <a href="#apiUrl" >apiUrl</a>
                             </li>
                         </ul>
                     </td>
@@ -163,22 +151,19 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#addUser" >addUser</a>
+                                <a href="#actualizarProducto" >actualizarProducto</a>
                             </li>
                             <li>
-                                <a href="#authenticate" >authenticate</a>
+                                <a href="#agregarProducto" >agregarProducto</a>
                             </li>
                             <li>
-                                <a href="#getCurrentUser" >getCurrentUser</a>
+                                <a href="#eliminarProducto" >eliminarProducto</a>
                             </li>
                             <li>
-                                <a href="#logout" >logout</a>
+                                <a href="#getAllProducts" >getAllProducts</a>
                             </li>
                             <li>
-                                <a href="#setCurrentUser" >setCurrentUser</a>
-                            </li>
-                            <li>
-                                <a href="#updateUser" >updateUser</a>
+                                <a href="#getProductsByCategoriaId" >getProductsByCategoriaId</a>
                             </li>
                         </ul>
                     </td>
@@ -203,7 +188,7 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/services/usuario.service.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/services/productos.service.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -250,24 +235,24 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="addUser"></a>
+                    <a name="actualizarProducto"></a>
                     <span class="name">
-                        <span ><b>addUser</b></span>
-                        <a href="#addUser"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>actualizarProducto</b></span>
+                        <a href="#actualizarProducto"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>addUser(user: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>actualizarProducto(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, producto: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/app/services/usuario.service.ts:29</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/services/productos.service.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -288,7 +273,19 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>user</td>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>producto</td>
                                             <td>
                                                             <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                             </td>
@@ -317,24 +314,24 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="authenticate"></a>
+                    <a name="agregarProducto"></a>
                     <span class="name">
-                        <span ><b>authenticate</b></span>
-                        <a href="#authenticate"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>agregarProducto</b></span>
+                        <a href="#agregarProducto"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>authenticate(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>agregarProducto(nuevoProducto: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/app/services/usuario.service.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">src/app/services/productos.service.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -355,9 +352,9 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>username</td>
+                                                <td>nuevoProducto</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                             </td>
 
                                             <td>
@@ -366,10 +363,65 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
 
 
                                         </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarProducto"></a>
+                    <span class="name">
+                        <span ><b>eliminarProducto</b></span>
+                        <a href="#eliminarProducto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarProducto(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/services/productos.service.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
                                         <tr>
-                                                <td>password</td>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                             </td>
 
                                             <td>
@@ -396,24 +448,24 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getCurrentUser"></a>
+                    <a name="getAllProducts"></a>
                     <span class="name">
-                        <span ><b>getCurrentUser</b></span>
-                        <a href="#getCurrentUser"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getAllProducts</b></span>
+                        <a href="#getAllProducts"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getCurrentUser()</code>
+<code>getAllProducts()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/services/usuario.service.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="13"
+                                    class="link-to-prism">src/app/services/productos.service.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -422,7 +474,7 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Observable&lt;any[]&gt;</code>
 
                         </div>
                 </td>
@@ -433,61 +485,24 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="logout"></a>
+                    <a name="getProductsByCategoriaId"></a>
                     <span class="name">
-                        <span ><b>logout</b></span>
-                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getProductsByCategoriaId</b></span>
+                        <a href="#getProductsByCategoriaId"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>logout()</code>
+<code>getProductsByCategoriaId(categoriaid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/services/usuario.service.ts:64</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="setCurrentUser"></a>
-                    <span class="name">
-                        <span ><b>setCurrentUser</b></span>
-                        <a href="#setCurrentUser"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>setCurrentUser(user: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">src/app/services/usuario.service.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/services/productos.service.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -508,9 +523,9 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>user</td>
+                                                <td>categoriaid</td>
                                             <td>
-                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                             </td>
 
                                             <td>
@@ -523,74 +538,7 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="updateUser"></a>
-                    <span class="name">
-                        <span ><b>updateUser</b></span>
-                        <a href="#updateUser"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>updateUser(user: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="60"
-                                    class="link-to-prism">src/app/services/usuario.service.ts:60</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>user</td>
-                                            <td>
-                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+                            <b>Returns : </b>    <code>Observable&lt;any[]&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -610,11 +558,11 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="baseUrl"></a>
+                    <a name="apiUrl"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
-                        <span ><b>baseUrl</b></span>
-                        <a href="#baseUrl"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>apiUrl</b></span>
+                        <a href="#apiUrl"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -626,44 +574,12 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;http://localhost:8080/usuario&#x27;</code>
+                        <i>Default value : </i><code>&#x27;http://localhost:8081/productos&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/services/usuario.service.ts:24</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="currentUser"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                        <span ><b>currentUser</b></span>
-                        <a href="#currentUser"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>null</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/services/usuario.service.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/services/productos.service.ts:9</a></div>
                         </td>
                     </tr>
 
@@ -676,73 +592,41 @@ Los métodos proporcionados permiten realizar operaciones básicas de gestión d
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { Injectable } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
-
-/**
- * @description
- * Servicio para la gestión de usuarios.
- * Permite agregar, obtener, actualizar y eliminar usuarios.
- */
-
-
-/**
- * @usageNotes
- * Este servicio utiliza el almacenamiento local para almacenar la lista de usuarios y el usuario actualmente autenticado.
- * Los métodos proporcionados permiten realizar operaciones básicas de gestión de usuarios, como agregar, obtener, actualizar y eliminar usuarios.
- */
-
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class UserService {
-  private baseUrl &#x3D; &#x27;http://localhost:8080/usuario&#x27;;
-  private currentUser: any &#x3D; null;
+export class ProductosService {
+  private apiUrl &#x3D; &#x27;http://localhost:8081/productos&#x27;;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  addUser(user: any): Observable&lt;any&gt; {
-    return this.http.post(this.baseUrl, user);
+  getAllProducts(): Observable&lt;any[]&gt; {
+    return this.http.get&lt;any[]&gt;(this.apiUrl);
   }
 
-  authenticate(username: string, password: string): Observable&lt;any&gt; {
-    const loginData &#x3D; { username, password };
-    return this.http.post(&#x60;${this.baseUrl}/signin&#x60;, loginData, { observe: &#x27;response&#x27; });
+  getProductsByCategoriaId(categoriaid: number): Observable&lt;any[]&gt; {
+    const url &#x3D; &#x60;${this.apiUrl}/categoria/${categoriaid}&#x60;;
+    return this.http.get&lt;any[]&gt;(url);
   }
 
-  setCurrentUser(user: any) {
-    this.currentUser &#x3D; user;
-    localStorage.setItem(&#x27;currentUser&#x27;, JSON.stringify(user)); // Almacena el usuario en localStorage
+  agregarProducto(nuevoProducto: any): Observable&lt;any&gt; {
+    return this.http.post&lt;any&gt;(this.apiUrl, nuevoProducto);
   }
 
-  getCurrentUser() {
-    if (!this.currentUser) {
-      const storedUser &#x3D; localStorage.getItem(&#x27;currentUser&#x27;);
-      if (storedUser) {
-        try {
-          this.currentUser &#x3D; JSON.parse(storedUser); // Recupera el usuario de localStorage si no está en memoria
-        } catch (error) {
-          console.error(&#x27;Error parsing JSON from localStorage:&#x27;, error);
-          this.currentUser &#x3D; null;
-        }
-      } else {
-        this.currentUser &#x3D; null;
-      }
-    }
-    return this.currentUser;
+  actualizarProducto(id: number, producto: any): Observable&lt;any&gt; {
+    const url &#x3D; &#x60;${this.apiUrl}/${id}&#x60;;
+    return this.http.put&lt;any&gt;(url, producto);
   }
 
-  updateUser(user: any): Observable&lt;any&gt; {
-    return this.http.put(&#x60;${this.baseUrl}/${user.id}&#x60;, user);
+  eliminarProducto(id: number): Observable&lt;any&gt; {
+    return this.http.delete&lt;any&gt;(&#x60;${this.apiUrl}/${id}&#x60;);
   }
-
-  logout() {
-    this.currentUser &#x3D; null;
-    localStorage.removeItem(&#x27;currentUser&#x27;); // Elimina el usuario de localStorage al cerrar sesión
-  }
-}</code></pre>
+}
+</code></pre>
     </div>
 
 </div>
@@ -785,7 +669,7 @@ export class UserService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'UserService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProductosService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CarroService } from '../../services/carro.service';
 import { UserService } from '../../services/usuario.service';
@@ -13,7 +13,7 @@ import { ProductosService } from '../../services/productos.service';
   templateUrl: './category-playstation-5.component.html',
   styleUrl: './category-playstation-5.component.scss'
 })
-export class CategoryPlaystation5Component {
+export class CategoryPlaystation5Component implements OnInit {
   carroService = inject(CarroService);
   currentUser: any;
   products: any[] = [];
@@ -21,15 +21,12 @@ export class CategoryPlaystation5Component {
 
   constructor( private userService: UserService,
     private productosService: ProductosService
-  ) {
-    this.currentUser = this.userService.getCurrentUser(); 
-  }
+  ) {}
 
   logout() {
-    this.userService.logout(); // Elimina el usuario autenticado
+    this.userService.logout();
     this.currentUser = null;
   }
-
 
   agregarAlCarro(producto : any){
     this.carroService.agregarAlCarro(producto);
@@ -37,6 +34,8 @@ export class CategoryPlaystation5Component {
   }
 
   ngOnInit(): void {
+    this.currentUser = this.userService.getCurrentUser();
+
     this.productosService.getProductsByCategoriaId(4).subscribe(
       (data: any[]) => {
         console.log('Received data:', data); // Verifica los datos recibidos en la consola
