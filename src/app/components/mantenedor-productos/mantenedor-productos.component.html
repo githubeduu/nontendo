@@ -72,39 +72,32 @@
     </div>
   </nav>
 </header>
-  <div class="container">
-    <div class="col">
-      <h2>Lista de Productos</h2>
-      <button class="btn btn-success btn-agregar" (click)="openModal()">Agregar Nuevo Producto</button>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Imagen</th>
-            <th>Precio</th>
-            <th>Categoría</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of products">
-            <td>{{ product.nombre }}</td>
-            <td>{{ product.descripcion }}</td>
-            <td><img [src]="product.imagenurl" alt="{{ product.nombre }}" style="max-width: 100px;"></td>
-            <td>{{ product.precio }}</td>
-            <td>{{ product.categoriaid }}</td>
-            <td class="btn-accion">
-              <button class="btn btn-primary btn-editar" (click)="editarProducto(product.id)">Editar</button>
-              <button class="btn btn-danger btn-eliminar" (click)="openDeleteModal(product)">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Imagen</th>
+      <th>Precio</th>
+      <th>Categoría</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td data-label="Nombre">{{ product.nombre }}</td>
+      <td data-label="Descripción">{{ product.descripcion }}</td>
+      <td data-label="Imagen"><img [src]="product.imagenurl" alt="{{ product.nombre }}" style="max-width: 100px;"></td>
+      <td data-label="Precio">{{ product.precio }}</td>
+      <td data-label="Categoría">{{ product.categoriaid }}</td>
+      <td class="btn-accion" data-label="Acciones">
+        <button class="btn btn-primary btn-editar" (click)="editarProducto(product.id)">Editar</button>
+        <button class="btn btn-danger btn-eliminar" (click)="openDeleteModal(product)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
   
   <!-- Modal -->
   <div *ngIf="showModal" class="modal" tabindex="-1" role="dialog" style="display: block;">

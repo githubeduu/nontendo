@@ -7,6 +7,15 @@ import { CarroService } from '../../services/carro.service';
 import { RouterModule } from '@angular/router';
 import { ProductosService } from '../../services/productos.service';
 
+/**
+ * @description
+ * Componente para el mantenimiento de productos.
+ * Permite agregar, actualizar y eliminar productos.
+ *
+ * @usageNotes
+ * Este componente muestra una lista de productos y permite agregar nuevos productos,
+ * actualizar productos existentes y eliminar productos seleccionados.
+ */
 @Component({
   selector: 'app-mantenedor-productos',
   standalone: true,
@@ -15,9 +24,11 @@ import { ProductosService } from '../../services/productos.service';
   styleUrls: ['./mantenedor-productos.component.scss']
 })
 export class MantenedorProductosComponent implements OnInit {
-  constructor( private userService: UserService,
+  constructor(
+    private userService: UserService,
     private productosService: ProductosService
   ) {}
+
   carroService = inject(CarroService);
   currentUser: any;
   showModal: boolean = false;
@@ -36,11 +47,18 @@ export class MantenedorProductosComponent implements OnInit {
   showDeleteModal: boolean = false;
   productToDelete: any = null;
 
+  /**
+   * Abre el modal para agregar o editar un producto.
+   * @param editMode Indica si se está editando un producto existente.
+   */
   openModal(editMode: boolean = false) {
     this.showModal = true;
     this.isEditMode = editMode;
   }
 
+  /**
+   * Cierra el modal de edición/agregación de producto.
+   */
   closeModal() {
     this.showModal = false;
     this.isEditMode = false;
@@ -48,16 +66,26 @@ export class MantenedorProductosComponent implements OnInit {
     this.resetForm();
   }
 
+  /**
+   * Abre el modal para confirmar la eliminación de un producto.
+   * @param product Producto a eliminar.
+   */
   openDeleteModal(product: any) {
     this.showDeleteModal = true;
     this.productToDelete = product;
   }
 
+  /**
+   * Cierra el modal de eliminación de producto.
+   */
   closeDeleteModal() {
     this.showDeleteModal = false;
     this.productToDelete = null;
   }
 
+  /**
+   * Reinicia el formulario de producto nuevo.
+   */
   resetForm() {
     this.nuevoProducto = {
       nombre: '',
@@ -69,11 +97,18 @@ export class MantenedorProductosComponent implements OnInit {
     };
   }
 
+  /**
+   * Cierra la sesión del usuario actual.
+   */
   logout() {
     this.userService.logout();
     this.currentUser = null;
   }
 
+  /**
+   * Inicializa el componente.
+   * Obtiene la lista de productos desde el servicio.
+   */
   ngOnInit(): void {
     this.currentUser = this.userService.getCurrentUser(); 
     this.productosService.getAllProducts().subscribe(
@@ -92,6 +127,10 @@ export class MantenedorProductosComponent implements OnInit {
     );
   }
 
+  /**
+   * Guarda un producto, ya sea agregándolo o actualizándolo.
+   * Si está en modo edición, actualiza el producto existente. De lo contrario, agrega un nuevo producto.
+   */
   guardarProducto() {
     if (this.isEditMode && this.productoSeleccionado) {
       // Lógica para actualizar el producto existente
@@ -125,6 +164,10 @@ export class MantenedorProductosComponent implements OnInit {
     }
   }
 
+  /**
+   * Elimina un producto.
+   * Elimina el producto seleccionado y actualiza la lista de productos.
+   */
   eliminarProducto() {
     if (this.productToDelete) {
       this.productosService.eliminarProducto(this.productToDelete.id).subscribe(
@@ -142,6 +185,10 @@ export class MantenedorProductosComponent implements OnInit {
     }
   }
 
+  /**
+   * Abre el modal para editar un producto existente.
+   * @param id ID del producto a editar.
+   */
   editarProducto(id: number): void {
     const producto = this.products.find(p => p.id === id);
     if (producto) {

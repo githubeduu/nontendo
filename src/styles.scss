@@ -11,6 +11,15 @@ body {
   min-height: 100vh;
 }
 
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+}
+
+.navbar-nav .nav-link {
+  cursor: pointer;
+}
+
 header, footer, nav.navbar {
   background-color: $header-bg-color;
   color: $header-text-color;
@@ -62,7 +71,7 @@ main {
   overflow: hidden;
 }
 
-.table {
+table {
   width: 100%;
   margin-bottom: 1rem;
   background-color: #fff;
@@ -90,6 +99,15 @@ main {
   tbody tr:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, 0.05);
   }
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table img {
+  max-width: 100%;
+  height: auto;
 }
 
 .btn-eliminar, .btn-editar {
@@ -168,6 +186,29 @@ main {
 }
 
 @media (max-width: 768px) {
+  table thead {
+    display: none; /* Oculta la cabecera en dispositivos móviles */
+  }
+
+  table tbody tr {
+    display: block;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  table tbody td {
+    display: block;
+    text-align: left;
+  }
+
+  table tbody td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 100px; /* Ajusta el ancho según necesites */
+    margin-right: 5px; /* Espacio entre el label y el valor */
+  }
+
   header img {
     width: 100px;
   }

@@ -84,6 +84,18 @@
             <div *ngIf="formSubmitted && miFormulario.get('password')?.errors?.['required']" class="text-danger">
               Por favor, introduce una contraseña.
             </div>
+            <div *ngIf="formSubmitted && miFormulario.get('password')?.errors?.['noNumber']" class="text-danger">
+              La contraseña debe contener al menos un número.
+            </div>
+            <div *ngIf="formSubmitted && miFormulario.get('password')?.errors?.['noSpecialCharacter']" class="text-danger">
+              La contraseña debe contener al menos un carácter especial.
+            </div>
+            <div *ngIf="formSubmitted && miFormulario.get('password')?.errors?.['noLetter']" class="text-danger">
+              La contraseña debe contener al menos una letra.
+            </div>
+            <div *ngIf="formSubmitted && miFormulario.get('password')?.errors?.['invalidLength']" class="text-danger">
+              La contraseña debe tener entre 8 y 20 caracteres.
+            </div>
           </div>
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre completo">
@@ -119,3 +131,4 @@
     </div>
   </section>
 </main>
+

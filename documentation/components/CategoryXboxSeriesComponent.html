@@ -106,6 +106,10 @@
                 role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
         <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
             <a href="#tree" class="nav-link"
                 role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
@@ -122,6 +126,12 @@
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
 
 
 <section data-compodoc="block-metadata">
@@ -155,9 +165,14 @@
                 <td class="col-md-9">
                             <code>CommonModule</code>
                             <code>RouterModule</code>
+                            <code>HttpClientModule</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./category-xbox-series.component.scss</code></td>
+            </tr>
 
 
 
@@ -168,10 +183,6 @@
 
 
 
-            <tr>
-                <td class="col-md-3">styleUrl</td>
-                <td class="col-md-9"><code>./category-xbox-series.component.scss</code></td>
-            </tr>
 
 
 
@@ -194,10 +205,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#carroService" >carroService</a>
+                                <a href="#currentUser" >currentUser</a>
                             </li>
                             <li>
-                                <a href="#currentUser" >currentUser</a>
+                                <a href="#filteredProducts" >filteredProducts</a>
+                            </li>
+                            <li>
+                                <a href="#products" >products</a>
                             </li>
                         </ul>
                     </td>
@@ -217,6 +231,9 @@
                             <li>
                                 <a href="#logout" >logout</a>
                             </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -235,12 +252,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userService: <a href="../injectables/UserService.html" target="_self">UserService</a>)</code>
+<code>constructor(userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, productosService: <a href="../injectables/ProductosService.html" target="_self">ProductosService</a>, carroService: <a href="../injectables/CarroService.html" target="_self">CarroService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -262,6 +279,30 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>productosService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProductosService.html" target="_self" >ProductosService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>carroService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CarroService.html" target="_self" >CarroService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -307,8 +348,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -374,8 +415,45 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -401,31 +479,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="carroService"></a>
-                    <span class="name">
-                        <span ><b>carroService</b></span>
-                        <a href="#carroService"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>inject(CarroService)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:15</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="currentUser"></a>
                     <span class="name">
                         <span ><b>currentUser</b></span>
@@ -441,7 +494,69 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredProducts"></a>
+                    <span class="name">
+                        <span ><b>filteredProducts</b></span>
+                        <a href="#filteredProducts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="products"></a>
+                    <span class="name">
+                        <span ><b>products</b></span>
+                        <a href="#products"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/category-xbox-series/category-xbox-series.component.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -455,38 +570,63 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
-import { Component, inject } from &#x27;@angular/core&#x27;;
+import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
+import { HttpClientModule } from &#x27;@angular/common/http&#x27;; // Importa HttpClientModule
 import { CarroService } from &#x27;../../services/carro.service&#x27;;
 import { UserService } from &#x27;../../services/usuario.service&#x27;;
+import { ProductosService } from &#x27;../../services/productos.service&#x27;;
 
 @Component({
   selector: &#x27;app-category-xbox-series&#x27;,
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule], // Agrega HttpClientModule a imports
   templateUrl: &#x27;./category-xbox-series.component.html&#x27;,
-  styleUrl: &#x27;./category-xbox-series.component.scss&#x27;
+  styleUrls: [&#x27;./category-xbox-series.component.scss&#x27;]
 })
-export class CategoryXboxSeriesComponent {
-  carroService &#x3D; inject(CarroService);
+export class CategoryXboxSeriesComponent implements OnInit {
   currentUser: any;
-  constructor( private userService: UserService
-  ) {
-    this.currentUser &#x3D; this.userService.getCurrentUser(); 
+  products: any[] &#x3D; [];
+  filteredProducts: any[] &#x3D; [];
+
+  constructor(
+    private userService: UserService,
+    private productosService: ProductosService,
+    private carroService: CarroService
+  ) {}
+
+  ngOnInit(): void {
+    this.currentUser &#x3D; this.userService.getCurrentUser();
+    
+    this.productosService.getProductsByCategoriaId(1).subscribe(
+      (data: any[]) &#x3D;&gt; {
+        console.log(&#x27;Received data:&#x27;, data); // Verifica los datos recibidos en la consola
+        if (Array.isArray(data)) {
+          this.products &#x3D; data;
+          this.filteredProducts &#x3D; this.products.filter(product &#x3D;&gt; product.categoriaid &#x3D;&#x3D;&#x3D; 1);
+          console.log(&#x27;Filtered products:&#x27;, this.filteredProducts); // Verifica productos filtrados
+        } else {
+          console.error(&#x27;Response format is unexpected:&#x27;, data);
+          this.products &#x3D; []; // Manejo de respuesta inesperada
+        }
+      },
+      error &#x3D;&gt; {
+        console.error(&#x27;Error fetching products:&#x27;, error); // Manejo de errores
+        // Puedes añadir lógica adicional para manejar errores
+      }
+    );
   }
 
   logout() {
-    this.userService.logout(); // Elimina el usuario autenticado
+    this.userService.logout();
     this.currentUser &#x3D; null;
   }
 
-
-  agregarAlCarro(producto : any){
+  agregarAlCarro(producto: any) {
     this.carroService.agregarAlCarro(producto);
     alert(&#x27;Producto Agregado correctamente&#x27;);
   }
-}
-</code></pre>
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
@@ -501,36 +641,36 @@ export class CategoryXboxSeriesComponent {
         &lt;ul class&#x3D;&quot;navbar-nav me-auto mb-2 mb-lg-0&quot;&gt;
           &lt;li class&#x3D;&quot;nav-item&quot;&gt;
             &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/index&quot;&gt;Inicio &lt;span class&#x3D;&quot;sr-only&quot;&gt;&lt;/span&gt;&lt;/a&gt;
-          &lt;/li&gt;       
+          &lt;/li&gt;
           &lt;li class&#x3D;&quot;nav-item dropdown&quot;&gt;
             &lt;a class&#x3D;&quot;nav-link dropdown-toggle&quot; href&#x3D;&quot;#&quot; id&#x3D;&quot;navbarDropdown&quot; role&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;dropdown&quot; aria-expanded&#x3D;&quot;false&quot;&gt;
               Playstation
             &lt;/a&gt;
-            &lt;ul class&#x3D;&quot;dropdown-menu&quot; aria-labelledby&#x3D;&quot;navbarDropdown&quot;&gt;           
+            &lt;ul class&#x3D;&quot;dropdown-menu&quot; aria-labelledby&#x3D;&quot;navbarDropdown&quot;&gt;
               &lt;li&gt;&lt;a class&#x3D;&quot;dropdown-item&quot; [routerLink]&#x3D;&quot;[&#x27;/categoryPlaystation4&#x27;]&quot;&gt;Playstation 4&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a class&#x3D;&quot;dropdown-item&quot; [routerLink]&#x3D;&quot;[&#x27;/categoryPlaystation5&#x27;]&quot;&gt;Playstation 5&lt;/a&gt;&lt;/li&gt;          
+              &lt;li&gt;&lt;a class&#x3D;&quot;dropdown-item&quot; [routerLink]&#x3D;&quot;[&#x27;/categoryPlaystation5&#x27;]&quot;&gt;Playstation 5&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
           &lt;li class&#x3D;&quot;nav-item dropdown&quot;&gt;
-              &lt;a class&#x3D;&quot;nav-link dropdown-toggle&quot; href&#x3D;&quot;#&quot; id&#x3D;&quot;navbarDropdown&quot; role&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;dropdown&quot; aria-expanded&#x3D;&quot;false&quot;&gt;
-                Nintendo
-              &lt;/a&gt;
-              &lt;ul class&#x3D;&quot;dropdown-menu&quot; aria-labelledby&#x3D;&quot;navbarDropdown&quot;&gt;           
-                &lt;li&gt;&lt;a class&#x3D;&quot;dropdown-item&quot; [routerLink]&#x3D;&quot;[&#x27;/categoryNintendoSwitch&#x27;]&quot;&gt;Nintedo Switch&lt;/a&gt;&lt;/li&gt;                 
-              &lt;/ul&gt;
-            &lt;/li&gt;
-            &lt;li class&#x3D;&quot;nav-item dropdown&quot;&gt;
-              &lt;a class&#x3D;&quot;nav-link dropdown-toggle&quot; href&#x3D;&quot;#&quot; id&#x3D;&quot;navbarDropdown&quot; role&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;dropdown&quot; aria-expanded&#x3D;&quot;false&quot;&gt;
-                Xbox
-              &lt;/a&gt;
-              &lt;ul class&#x3D;&quot;dropdown-menu&quot; aria-labelledby&#x3D;&quot;navbarDropdown&quot;&gt;           
-                &lt;li&gt;&lt;a class&#x3D;&quot;dropdown-item&quot; [routerLink]&#x3D;&quot;[&#x27;/categoryXboxSeries&#x27;]&quot;&gt;Xbox Series&lt;/a&gt;&lt;/li&gt;             
-              &lt;/ul&gt;
-            &lt;/li&gt;     
+            &lt;a class&#x3D;&quot;nav-link dropdown-toggle&quot; href&#x3D;&quot;#&quot; id&#x3D;&quot;navbarDropdown&quot; role&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;dropdown&quot; aria-expanded&#x3D;&quot;false&quot;&gt;
+              Nintendo
+            &lt;/a&gt;
+            &lt;ul class&#x3D;&quot;dropdown-menu&quot; aria-labelledby&#x3D;&quot;navbarDropdown&quot;&gt;
+              &lt;li&gt;&lt;a class&#x3D;&quot;dropdown-item&quot; [routerLink]&#x3D;&quot;[&#x27;/categoryNintendoSwitch&#x27;]&quot;&gt;Nintendo Switch&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li class&#x3D;&quot;nav-item dropdown&quot;&gt;
+            &lt;a class&#x3D;&quot;nav-link dropdown-toggle&quot; href&#x3D;&quot;#&quot; id&#x3D;&quot;navbarDropdown&quot; role&#x3D;&quot;button&quot; data-bs-toggle&#x3D;&quot;dropdown&quot; aria-expanded&#x3D;&quot;false&quot;&gt;
+              Xbox
+            &lt;/a&gt;
+            &lt;ul class&#x3D;&quot;dropdown-menu&quot; aria-labelledby&#x3D;&quot;navbarDropdown&quot;&gt;
+              &lt;li&gt;&lt;a class&#x3D;&quot;dropdown-item&quot; [routerLink]&#x3D;&quot;[&#x27;/categoryXboxSeries&#x27;]&quot;&gt;Xbox Series&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
         &lt;/ul&gt;
-        &lt;ul class&#x3D;&quot;navbar-nav ml-auto&quot; *ngIf&#x3D;&quot;currentUser&quot;&gt;
+        &lt;ul class&#x3D;&quot;navbar-nav ml-auto&quot; *ngIf&#x3D;&quot;currentUser; else guest&quot;&gt;
           &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-            &lt;span class&#x3D;&quot;nav-link&quot;&gt;Hola, {{ currentUser.username }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;nav-link&quot;&gt;Hola, {{ currentUser?.nombre }}&lt;/span&gt; &lt;!-- Mostrar nombre completo --&gt;
           &lt;/li&gt;
           &lt;li class&#x3D;&quot;nav-item&quot;&gt;
             &lt;a class&#x3D;&quot;nav-link cursor-pointer&quot; [routerLink]&#x3D;&quot;[&#x27;/cuenta&#x27;]&quot;&gt;Mi Cuenta&lt;/a&gt;
@@ -538,67 +678,57 @@ export class CategoryXboxSeriesComponent {
           &lt;li class&#x3D;&quot;nav-item&quot;&gt;
             &lt;a class&#x3D;&quot;nav-link cursor-pointer&quot; (click)&#x3D;&quot;logout()&quot;&gt;Cerrar Sesión&lt;/a&gt;
           &lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;ul class&#x3D;&quot;navbar-nav ml-auto&quot; *ngIf&#x3D;&quot;!currentUser&quot;&gt;
-          &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-            &lt;a class&#x3D;&quot;nav-link&quot; [routerLink]&#x3D;&quot;[&#x27;/login&#x27;]&quot;&gt;Login&lt;/a&gt;
+          &lt;!-- Mostrar Mantenedor Productos si el rolId es 1 --&gt;
+          &lt;li class&#x3D;&quot;nav-item&quot; *ngIf&#x3D;&quot;currentUser &amp;&amp; currentUser.rolId &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+            &lt;a class&#x3D;&quot;nav-link&quot; [routerLink]&#x3D;&quot;[&#x27;/mantenedorProductos&#x27;]&quot;&gt;Mantenedor Productos&lt;/a&gt;
           &lt;/li&gt;
-          &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-            &lt;a class&#x3D;&quot;nav-link&quot; [routerLink]&#x3D;&quot;[&#x27;/categoryRegistro&#x27;]&quot;&gt;Registro Usuario&lt;/a&gt;
-          &lt;/li&gt;                                     
         &lt;/ul&gt;
+        &lt;ng-template #guest&gt;
+          &lt;ul class&#x3D;&quot;navbar-nav ml-auto&quot;&gt;
+            &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+              &lt;a class&#x3D;&quot;nav-link&quot; [routerLink]&#x3D;&quot;[&#x27;/login&#x27;]&quot;&gt;Login&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+              &lt;a class&#x3D;&quot;nav-link&quot; [routerLink]&#x3D;&quot;[&#x27;/categoryRegistro&#x27;]&quot;&gt;Registro Usuario&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/ng-template&gt;
         &lt;ul class&#x3D;&quot;navbar-nav ml-auto&quot;&gt;
           &lt;li&gt;
             &lt;a [routerLink]&#x3D;&quot;[&#x27;/carro&#x27;]&quot; class&#x3D;&quot;btn btn-outline-danger&quot;&gt;
               &lt;i class&#x3D;&quot;bi bi-cart-fill&quot;&gt;&lt;/i&gt;
             &lt;/a&gt;
-          &lt;/li&gt; 
+          &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/nav&gt;
 &lt;/header&gt;
-  &lt;main&gt;
-    &lt;section id&#x3D;&quot;games&quot; class&#x3D;&quot;container mt-4&quot;&gt;
-        &lt;div class&#x3D;&quot;row&quot;&gt;
-            &lt;div class&#x3D;&quot;col-lg-3 col-md-4 col-sm-6 mb-4&quot;&gt;
-                &lt;div class&#x3D;&quot;card&quot;&gt;
-                    &lt;img src&#x3D;&quot;assets/images/juegos/xbox/2kdrive.jpg&quot; class&#x3D;&quot;card-img-top&quot; alt&#x3D;&quot;Juego 1&quot;&gt;
-                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
-                        &lt;h5 class&#x3D;&quot;card-title&quot;&gt;2K Drive&lt;/h5&gt;
-                        &lt;p class&#x3D;&quot;card-text&quot;&gt;es un juego de carreras desarrollado por Lucid Games y publicado por 2K Games para dispositivos móviles. Ofrece una variedad de modos de juego, incluidas carreras, desafíos, eventos multijugador y más. Los jugadores pueden competir en diferentes tipos de carreras y desafíos en varios entornos, desde pistas de carreras hasta calles urbanas.&lt;/p&gt;
-                        &lt;p class&#x3D;&quot;card-text price&quot;&gt;Precio: $45.990 &lt;span&gt;Descuento: Sí/No&lt;/span&gt;&lt;/p&gt;          
-                        &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;agregarAlCarro({ nombre: &#x27;2K Drive&#x27;, precio: 45990, id: 1 })&quot;&gt;Agregar al Carrito&lt;/button&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class&#x3D;&quot;col-lg-3 col-md-4 col-sm-6 mb-4&quot;&gt;
-                &lt;div class&#x3D;&quot;card&quot;&gt;
-                    &lt;img src&#x3D;&quot;assets/images/juegos/xbox/battlefield.jpg&quot; class&#x3D;&quot;card-img-top&quot; alt&#x3D;&quot;Juego 2&quot;&gt;
-                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
-                        &lt;h5 class&#x3D;&quot;card-title&quot;&gt;Battlefield 2042&lt;/h5&gt;
-                        &lt;p class&#x3D;&quot;card-text&quot;&gt;es una serie de videojuegos de disparos en primera persona desarrollada por EA DICE y publicada por Electronic Arts. Conocida por sus grandes mapas, vehículos y batallas multijugador, la serie se centra en la guerra moderna y ha sido elogiada por su jugabilidad y gráficos.&lt;/p&gt;
-                        &lt;p class&#x3D;&quot;card-text price&quot;&gt;Precio: $29.990 &lt;span&gt;Descuento: Sí/No&lt;/span&gt;&lt;/p&gt;
-                        &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;agregarAlCarro({ nombre: &#x27;Battlefield 2042&#x27;, precio: 29990, id: 2 })&quot;&gt;Agregar al Carrito&lt;/button&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class&#x3D;&quot;col-lg-3 col-md-4 col-sm-6 mb-4&quot;&gt;
-                &lt;div class&#x3D;&quot;card&quot;&gt;
-                    &lt;img src&#x3D;&quot;assets/images/juegos/xbox/sanandreasxbx.jpg&quot; class&#x3D;&quot;card-img-top&quot; alt&#x3D;&quot;Juego 3&quot;&gt;
-                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
-                        &lt;h5 class&#x3D;&quot;card-title&quot;&gt;Grand Theft Auto: San Andreas&lt;/h5&gt;
-                        &lt;p class&#x3D;&quot;card-text&quot;&gt;para Xbox Series X ofrece la clásica aventura de CJ con gráficos mejorados y tiempos de carga más rápidos, manteniendo su icónica jugabilidad y narrativa.&lt;/p&gt;
-                        &lt;p class&#x3D;&quot;card-text price&quot;&gt;Precio: $24.990 &lt;span&gt;Descuento: Sí/No&lt;/span&gt;&lt;/p&gt;
-                        &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;agregarAlCarro({ nombre: &#x27;Grand Theft Auto: San Andreas&#x27;, precio: 24990, id: 3 })&quot;&gt;Agregar al Carrito&lt;/button&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;                   
-        &lt;/div&gt;              
-    &lt;/section&gt;
+&lt;main&gt;
+  &lt;section id&#x3D;&quot;games&quot; class&#x3D;&quot;container mt-4&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;article class&#x3D;&quot;col-lg-3 col-md-4 col-sm-6 mb-4&quot; *ngFor&#x3D;&quot;let product of filteredProducts&quot;&gt;
+        &lt;div class&#x3D;&quot;card&quot;&gt;
+          &lt;img [src]&#x3D;&quot;product.imagenurl&quot; class&#x3D;&quot;card-img-top&quot; alt&#x3D;&quot;{{product.nombre}}&quot;&gt;
+          &lt;div class&#x3D;&quot;card-body&quot;&gt;
+            &lt;h5 class&#x3D;&quot;card-title&quot;&gt;{{product.nombre}}&lt;/h5&gt;
+            &lt;p class&#x3D;&quot;card-text&quot;&gt;{{product.descripcion}}&lt;/p&gt;
+            &lt;p class&#x3D;&quot;card-text price&quot;&gt;Precio: {{product.precio}} &lt;span&gt;Descuento: {{product.descuento ? &#x27;Sí&#x27; : &#x27;No&#x27;}}&lt;/span&gt;&lt;/p&gt;
+            &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;agregarAlCarro({ nombre: product.nombre, precio: product.precio, id: product.id })&quot;&gt;Agregar al Carrito&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
 &lt;/main&gt;</code></pre>
     </div>
 
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./category-xbox-series.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
 
     <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
@@ -625,8 +755,8 @@ export class CategoryXboxSeriesComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><header>  <nav class="navbar navbar-expand-sm navbar-light">    <div class="container-fluid">      <img src="assets/images/logo/logo.png" alt="Logo Nontendo">      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">        <span class="navbar-toggler-icon"></span>      </button>      <div class="collapse navbar-collapse" id="navbarSupportedContent">        <ul class="navbar-nav me-auto mb-2 mb-lg-0">          <li class="nav-item">            <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>          </li>                 <li class="nav-item dropdown">            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">              Playstation            </a>            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                         <li><a class="dropdown-item" [routerLink]="[\'/categoryPlaystation4\']">Playstation 4</a></li>              <li><a class="dropdown-item" [routerLink]="[\'/categoryPlaystation5\']">Playstation 5</a></li>                      </ul>          </li>          <li class="nav-item dropdown">              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">                Nintendo              </a>              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                           <li><a class="dropdown-item" [routerLink]="[\'/categoryNintendoSwitch\']">Nintedo Switch</a></li>                               </ul>            </li>            <li class="nav-item dropdown">              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">                Xbox              </a>              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                           <li><a class="dropdown-item" [routerLink]="[\'/categoryXboxSeries\']">Xbox Series</a></li>                           </ul>            </li>             </ul>        <ul class="navbar-nav ml-auto" *ngIf="currentUser">          <li class="nav-item">            <span class="nav-link">Hola, {{ currentUser.username }}</span>          </li>          <li class="nav-item">            <a class="nav-link cursor-pointer" [routerLink]="[\'/cuenta\']">Mi Cuenta</a>          </li>          <li class="nav-item">            <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>          </li>        </ul>        <ul class="navbar-nav ml-auto" *ngIf="!currentUser">          <li class="nav-item">            <a class="nav-link" [routerLink]="[\'/login\']">Login</a>          </li>          <li class="nav-item">            <a class="nav-link" [routerLink]="[\'/categoryRegistro\']">Registro Usuario</a>          </li>                                             </ul>        <ul class="navbar-nav ml-auto">          <li>            <a [routerLink]="[\'/carro\']" class="btn btn-outline-danger">              <i class="bi bi-cart-fill"></i>            </a>          </li>         </ul>      </div>    </div>  </nav></header>  <main>    <section id="games" class="container mt-4">        <div class="row">            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">                <div class="card">                    <img src="assets/images/juegos/xbox/2kdrive.jpg" class="card-img-top" alt="Juego 1">                    <div class="card-body">                        <h5 class="card-title">2K Drive</h5>                        <p class="card-text">es un juego de carreras desarrollado por Lucid Games y publicado por 2K Games para dispositivos móviles. Ofrece una variedad de modos de juego, incluidas carreras, desafíos, eventos multijugador y más. Los jugadores pueden competir en diferentes tipos de carreras y desafíos en varios entornos, desde pistas de carreras hasta calles urbanas.</p>                        <p class="card-text price">Precio: $45.990 <span>Descuento: Sí/No</span></p>                                  <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: \'2K Drive\', precio: 45990, id: 1 })">Agregar al Carrito</button>                    </div>                </div>            </div>            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">                <div class="card">                    <img src="assets/images/juegos/xbox/battlefield.jpg" class="card-img-top" alt="Juego 2">                    <div class="card-body">                        <h5 class="card-title">Battlefield 2042</h5>                        <p class="card-text">es una serie de videojuegos de disparos en primera persona desarrollada por EA DICE y publicada por Electronic Arts. Conocida por sus grandes mapas, vehículos y batallas multijugador, la serie se centra en la guerra moderna y ha sido elogiada por su jugabilidad y gráficos.</p>                        <p class="card-text price">Precio: $29.990 <span>Descuento: Sí/No</span></p>                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: \'Battlefield 2042\', precio: 29990, id: 2 })">Agregar al Carrito</button>                    </div>                </div>            </div>            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">                <div class="card">                    <img src="assets/images/juegos/xbox/sanandreasxbx.jpg" class="card-img-top" alt="Juego 3">                    <div class="card-body">                        <h5 class="card-title">Grand Theft Auto: San Andreas</h5>                        <p class="card-text">para Xbox Series X ofrece la clásica aventura de CJ con gráficos mejorados y tiempos de carga más rápidos, manteniendo su icónica jugabilidad y narrativa.</p>                        <p class="card-text price">Precio: $24.990 <span>Descuento: Sí/No</span></p>                        <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: \'Grand Theft Auto: San Andreas\', precio: 24990, id: 3 })">Agregar al Carrito</button>                    </div>                </div>            </div>                           </div>                  </section></main></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarroComponent', 'selector': 'app-carro'},{'name': 'CategoryNintendoSwitchComponent', 'selector': 'app-category-nintendo-switch'},{'name': 'CategoryPlaystation4Component', 'selector': 'app-category-playstation-4'},{'name': 'CategoryPlaystation5Component', 'selector': 'app-category-playstation-5'},{'name': 'CategoryRegistroComponent', 'selector': 'app-category-registro'},{'name': 'CategoryXboxSeriesComponent', 'selector': 'app-category-xbox-series'},{'name': 'CuentaComponent', 'selector': 'app-cuenta'},{'name': 'IndexComponent', 'selector': 'app-index'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'RecuperarContrasenaComponent', 'selector': 'app-recuperar-contrasena'}];
+        var COMPONENT_TEMPLATE = '<div><header>  <nav class="navbar navbar-expand-sm navbar-light">    <div class="container-fluid">      <img src="assets/images/logo/logo.png" alt="Logo Nontendo">      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">        <span class="navbar-toggler-icon"></span>      </button>      <div class="collapse navbar-collapse" id="navbarSupportedContent">        <ul class="navbar-nav me-auto mb-2 mb-lg-0">          <li class="nav-item">            <a class="nav-link" routerLink="/index">Inicio <span class="sr-only"></span></a>          </li>          <li class="nav-item dropdown">            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">              Playstation            </a>            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">              <li><a class="dropdown-item" [routerLink]="[\'/categoryPlaystation4\']">Playstation 4</a></li>              <li><a class="dropdown-item" [routerLink]="[\'/categoryPlaystation5\']">Playstation 5</a></li>            </ul>          </li>          <li class="nav-item dropdown">            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">              Nintendo            </a>            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">              <li><a class="dropdown-item" [routerLink]="[\'/categoryNintendoSwitch\']">Nintendo Switch</a></li>            </ul>          </li>          <li class="nav-item dropdown">            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">              Xbox            </a>            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">              <li><a class="dropdown-item" [routerLink]="[\'/categoryXboxSeries\']">Xbox Series</a></li>            </ul>          </li>        </ul>        <ul class="navbar-nav ml-auto" *ngIf="currentUser; else guest">          <li class="nav-item">            <span class="nav-link">Hola, {{ currentUser?.nombre }}</span> <!-- Mostrar nombre completo -->          </li>          <li class="nav-item">            <a class="nav-link cursor-pointer" [routerLink]="[\'/cuenta\']">Mi Cuenta</a>          </li>          <li class="nav-item">            <a class="nav-link cursor-pointer" (click)="logout()">Cerrar Sesión</a>          </li>          <!-- Mostrar Mantenedor Productos si el rolId es 1 -->          <li class="nav-item" *ngIf="currentUser && currentUser.rolId === 1">            <a class="nav-link" [routerLink]="[\'/mantenedorProductos\']">Mantenedor Productos</a>          </li>        </ul>        <ng-template #guest>          <ul class="navbar-nav ml-auto">            <li class="nav-item">              <a class="nav-link" [routerLink]="[\'/login\']">Login</a>            </li>            <li class="nav-item">              <a class="nav-link" [routerLink]="[\'/categoryRegistro\']">Registro Usuario</a>            </li>          </ul>        </ng-template>        <ul class="navbar-nav ml-auto">          <li>            <a [routerLink]="[\'/carro\']" class="btn btn-outline-danger">              <i class="bi bi-cart-fill"></i>            </a>          </li>        </ul>      </div>    </div>  </nav></header><main>  <section id="games" class="container mt-4">    <div class="row">      <article class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let product of filteredProducts">        <div class="card">          <img [src]="product.imagenurl" class="card-img-top" alt="{{product.nombre}}">          <div class="card-body">            <h5 class="card-title">{{product.nombre}}</h5>            <p class="card-text">{{product.descripcion}}</p>            <p class="card-text price">Precio: {{product.precio}} <span>Descuento: {{product.descuento ? \'Sí\' : \'No\'}}</span></p>            <button class="btn btn-primary" (click)="agregarAlCarro({ nombre: product.nombre, precio: product.precio, id: product.id })">Agregar al Carrito</button>          </div>        </div>      </article>    </div>  </section></main></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarroComponent', 'selector': 'app-carro'},{'name': 'CategoryNintendoSwitchComponent', 'selector': 'app-category-nintendo-switch'},{'name': 'CategoryPlaystation4Component', 'selector': 'app-category-playstation-4'},{'name': 'CategoryPlaystation5Component', 'selector': 'app-category-playstation-5'},{'name': 'CategoryRegistroComponent', 'selector': 'app-category-registro'},{'name': 'CategoryXboxSeriesComponent', 'selector': 'app-category-xbox-series'},{'name': 'CuentaComponent', 'selector': 'app-cuenta'},{'name': 'IndexComponent', 'selector': 'app-index'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MantenedorProductosComponent', 'selector': 'app-mantenedor-productos'},{'name': 'RecuperarContrasenaComponent', 'selector': 'app-recuperar-contrasena'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CategoryXboxSeriesComponent'};
 </script>

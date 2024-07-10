@@ -1,27 +1,26 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/usuario.service';
 
 /**
  * @description
- * Componente para el registro de usuarios.
- * Permite a los usuarios registrarse ingresando su nombre, email, nombre de usuario, contraseña y fecha de nacimiento.
+ * Componente para el registro de usuarios en una categoría específica.
+ * Permite a los usuarios registrarse ingresando su información personal.
+ *
+ * @usageNotes
+ * Este componente muestra un formulario de registro donde los usuarios pueden ingresar su información personal.
+ * Valida que los campos obligatorios estén completos y que la contraseña cumpla con los requisitos mínimos de seguridad.
  */
 
-/**
- * @usageNotes
- * Este componente utiliza un formulario reactivo para recopilar la información del usuario.
- * Se deben cumplir ciertos requisitos de validación para completar el formulario correctamente.
- */
 
 @Component({
   selector: 'app-category-registro',
   standalone: true,
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './category-registro.component.html',
-  styleUrl: './category-registro.component.scss'
+  styleUrls: ['./category-registro.component.scss']
 })
 export class CategoryRegistroComponent {
   miFormulario!: FormGroup;
@@ -32,18 +31,18 @@ export class CategoryRegistroComponent {
               private router: Router,
               private userService: UserService
   ) {
-    this.currentUser = this.userService.getCurrentUser(); 
+    this.currentUser = this.userService.getCurrentUser();
   }
 
   logout() {
     this.userService.logout(); // Elimina el usuario autenticado
     this.currentUser = null;
   }
-  
+
   ngOnInit(): void {
     this.miFormulario = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, this.validatePassword]],
       name: ['', Validators.required],
       rut: ['', Validators.required],
       direccion: ['', Validators.required],
@@ -51,22 +50,41 @@ export class CategoryRegistroComponent {
       rolId: [3, Validators.required]
     });
   }
-  
-  /**
-   * Valida que la contraseña cumpla con los requisitos mínimos.
-   * @param control Control de formulario a validar.
-   * @returns Objeto con el error si la contraseña es inválida, o nulo si es válida.
+
+   /**
+   * Valida la fortaleza de una contraseña según los siguientes criterios:
+   * - Debe contener al menos un número.
+   * - Debe contener al menos un carácter especial.
+   * - Debe contener al menos una letra.
+   * - Debe tener una longitud entre 8 y 20 caracteres.
+   *
+   * @param control El control de formulario que representa el campo de contraseña.
+   * @returns Un objeto de errores si la contraseña no cumple con los criterios especificados; de lo contrario, null.
    */
-  validatePassword(control: any): { [key: string]: boolean } | null {
+  validatePassword(control: AbstractControl): ValidationErrors | null {
     const password = control.value;
     const hasNumber = /\d/.test(password);
     const hasSpecialCharacter = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
     const hasLetter = /[a-zA-Z]/.test(password);
-    const isValid = hasNumber && hasSpecialCharacter && hasLetter;
+    const isValidLength = password && password.length >= 8 && password.length <= 20;
 
-    return isValid ? null : { invalidPassword: true };
+    const errors: ValidationErrors = {};
+    if (!hasNumber) {
+      errors['noNumber'] = true;
+    }
+    if (!hasSpecialCharacter) {
+      errors['noSpecialCharacter'] = true;
+    }
+    if (!hasLetter) {
+      errors['noLetter'] = true;
+    }
+    if (!isValidLength) {
+      errors['invalidLength'] = true;
+    }
+
+    return Object.keys(errors).length > 0 ? errors : null;
   }
-  
+
   submitForm() {
     this.formSubmitted = true;
     if (this.miFormulario.valid) {
