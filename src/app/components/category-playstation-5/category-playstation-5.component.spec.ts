@@ -3,6 +3,7 @@ import { CategoryPlaystation5Component } from './category-playstation-5.componen
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CategoryPlaystation5Component', () => {
   let component: CategoryPlaystation5Component;
@@ -10,7 +11,7 @@ describe('CategoryPlaystation5Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientModule],
       declarations: [],
       providers: [
         { 

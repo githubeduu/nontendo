@@ -3,6 +3,7 @@ import { IndexComponent } from './index.component';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('IndexComponent', () => {
   let component: IndexComponent;
@@ -10,7 +11,7 @@ describe('IndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientModule],
       declarations: [],
       providers: [
         { 

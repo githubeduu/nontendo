@@ -3,6 +3,7 @@ import { CategoryNintendoSwitchComponent } from './category-nintendo-switch.comp
 import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CategoryNintendoSwitchComponent', () => {
   let component: CategoryNintendoSwitchComponent;
@@ -10,7 +11,7 @@ describe('CategoryNintendoSwitchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientModule],
       declarations: [],
       providers: [
         { 

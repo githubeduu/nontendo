@@ -4,6 +4,7 @@ import { CuentaComponent } from './cuenta.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CuentaComponent', () => {
   let component: CuentaComponent;
@@ -11,7 +12,7 @@ describe('CuentaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientModule],
       declarations: [],
       providers: [
         { 
